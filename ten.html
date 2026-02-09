@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dsports - Sports is Soul</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #FC7D5C;
+            --dark-bg: #1a1a1a;
+            --light-gray: #f5f5f5;
+            --text-dark: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: white;
+            line-height: 1.6;
+        }
+
+        /* Header/Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-orange);
+            letter-spacing: -1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-orange);
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            right: -150px;
+            top: -100px;
+            width: 500px;
+            height: 500px;
+            background-color: rgba(252, 125, 92, 0.08);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            flex: 1;
+            z-index: 2;
+            max-width: 500px;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            letter-spacing: -2px;
+        }
+
+        .hero-title .highlight {
+            color: var(--primary-orange);
+        }
+
+        .hero-arrow {
+            color: var(--primary-orange);
+            font-size: 48px;
+            margin: 0 8px;
+            display: inline-block;
+        }
+
+        .hero-divider {
+            width: 50px;
+            height: 3px;
+            background-color: var(--text-dark);
+            margin: 20px 0;
+        }
+
+        .hero-description {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .athletes-placeholder {
+            width: 100%;
+            max-width: 450px;
+            height: 350px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 35px;
+            background-color: var(--dark-bg);
+            color: white;
+            margin: 50px 50px;
+            border-radius: 15px;
+        }
+
+        .stat-item {
+            text-align: left;
+            padding: 10px 0;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .stat-number .highlight {
+            color: var(--primary-orange);
+        }
+
+        .stat-text {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 40px 50px;
+            background-color: white;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+
+        .feature-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .feature-title .highlight {
+            color: var(--primary-orange);
+        }
+
+        .feature-description {
+            font-size: 13px;
+            color: var(--text-light);
+            max-width: 150px;
+        }
+
+        /* Unique Approach Section */
+        .approach-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            padding: 60px 50px;
+            background-color: var(--dark-bg);
+            color: white;
+            border-radius: 15px;
+            margin: 50px 50px;
+            align-items: center;
+        }
+
+        .approach-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+        }
+
+        .approach-content h2 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .approach-content h2 .highlight {
+            color: var(--primary-orange);
+        }
+
+        .approach-content p {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Sports Category Section */
+        .sports-category {
+            padding: 60px 50px;
+            background-color: white;
+        }
+
+        .category-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .category-title .highlight {
+            color: var(--primary-orange);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .category-card {
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+        }
+
+        .category-label {
+            padding: 15px;
+            background-color: var(--dark-bg);
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* Coaches Section */
+        .coaches-section {
+            padding: 60px 50px;
+            background-color: var(--dark-bg);
+            color: white;
+            border-radius: 15px;
+            margin: 50px 50px;
+        }
+
+        .coaches-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .coach-card {
+            text-align: center;
+        }
+
+        .coach-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #3c3c3c 0%, #2a2a2a 100%);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .coach-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .coach-specialty {
+            font-size: 13px;
+            color: var(--primary-orange);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .coach-description {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        /* Articles Section */
+        .articles-section {
+            padding: 60px 50px;
+            background-color: white;
+        }
+
+        .articles-title {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        .articles-title .highlight {
+            color: var(--primary-orange);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .article-card {
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+        }
+
+        .article-content {
+            padding: 20px;
+        }
+
+        .article-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .author-avatar {
+            width: 35px;
+            height: 35px;
+            background-color: var(--primary-orange);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .author-date {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .article-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .article-description {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: #e0e0e0;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .action-btn.primary {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+
+        .action-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 50px;
+            background-color: var(--dark-bg);
+            color: white;
+            border-radius: 15px;
+            margin: 50px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .newsletter-content h3 {
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-content h3 .highlight {
+            color: var(--primary-orange);
+        }
+
+        .newsletter-input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-btn {
+            padding: 12px 25px;
+            background-color: var(--primary-orange);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            opacity: 0.9;
+        }
+
+        .newsletter-image {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, #3c3c3c 0%, #2a2a2a 100%);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-gray);
+            padding: 50px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-size: 13px;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-orange);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer-logo {
+            color: var(--primary-orange);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-orange);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-orange);
+            color: white;
+        }
+
+        /* Decorative Elements */
+        .star {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.3;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .category-grid,
+            .coaches-grid,
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .approach-section {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-section {
+                flex-direction: column;
+            }
+
+            .newsletter-image {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 30px 20px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                margin: 30px 20px;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .category-grid,
+            .coaches-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-section {
+                padding: 30px 20px;
+                margin: 30px 20px;
+            }
+
+            .hero,
+            .stats,
+            .approach-section,
+            .coaches-section,
+            .newsletter-section {
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+
+            .sports-category,
+            .articles-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Dsports</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#sports">Sports</a>
+        </nav>
+        <div class="menu-icon">☰</div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                S<span class="highlight">P</span>ORTS
+                <br>
+                IS<span class="hero-arrow">→</span><span class="highlight">SOUL</span>
+            </h1>
+            <div class="hero-divider"></div>
+            <p class="hero-description">
+                We're passionate about sports. Whether you're a dedicated fan, an aspiring athlete, or someone who simply loves the game!
+            </p>
+        </div>
+        <div class="hero-image">
+            <div class="athletes-placeholder">🏈</div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">21K <span class="highlight">+</span></div>
+            <div class="stat-text">Registered athletes are proudly and happily collaborating here.</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100 <span class="highlight">+</span></div>
+            <div class="stat-text">Professional coaches are available to provide the best training.</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">14 <span class="highlight">+</span></div>
+            <div class="stat-text">We've earned over 14+ awards in just six years, and we're still going.</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-item">
+            <div class="feature-icon">🏆</div>
+            <div class="feature-title"><span class="highlight">Achievements</span></div>
+            <div class="feature-description">We celebrate your winners together</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">⚙️</div>
+            <div class="feature-title"><span class="highlight">Services</span></div>
+            <div class="feature-description">Everything your training needs</div>
+        </div>
+    </section>
+
+    <!-- Unique Approach Section -->
+    <section class="approach-section">
+        <div>
+            <h2>Unique<br>Approach<br><span class="highlight">for you</span></h2>
+            <p>We provide a unique experience in training athletes. Our methodology combines the best practices with modern technology to ensure optimal results for every athlete, whether they are beginners or professionals.</p>
+            <p>Our approach is personalized and focused on achieving your specific goals. With our team of expert coaches and state-of-the-art facilities, we guarantee the best training experience possible.</p>
+        </div>
+        <div class="approach-image">🏃</div>
+    </section>
+
+    <!-- Sports Category Section -->
+    <section class="sports-category">
+        <h2 class="category-title">Variant <span class="highlight">Sports</span> Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-image">⚽</div>
+                <div class="category-label">Football</div>
+            </div>
+            <div class="category-card">
+                <div class="category-image">🏀</div>
+                <div class="category-label">Basketball</div>
+            </div>
+            <div class="category-card">
+                <div class="category-image">🏈</div>
+                <div class="category-label">American Football</div>
+            </div>
+            <div class="category-card">
+                <div class="category-image">⚾</div>
+                <div class="category-label">Baseball</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coaches Section -->
+    <section class="coaches-section">
+        <h2 class="coaches-title">Meet with Professional Coach</h2>
+        <div class="coaches-grid">
+            <div class="coach-card">
+                <div class="coach-image">👨‍🏫</div>
+                <div class="coach-name">Michael Johnson</div>
+                <div class="coach-specialty">American Coach</div>
+                <div class="coach-description">Expert in football training with over 20 years of experience in coaching professional athletes.</div>
+            </div>
+            <div class="coach-card">
+                <div class="coach-image">👩‍🏫</div>
+                <div class="coach-name">Jessica Taylor</div>
+                <div class="coach-specialty">Basketball Coach</div>
+                <div class="coach-description">Specialized in developing young basketball talents with innovative training methods.</div>
+            </div>
+            <div class="coach-card">
+                <div class="coach-image">👨‍🏫</div>
+                <div class="coach-name">Arthur Martinez</div>
+                <div class="coach-specialty">Fitness Coach</div>
+                <div class="coach-description">Dedicated to creating personalized fitness programs for athletes of all levels.</div>
+            </div>
+            <div class="coach-card">
+                <div class="coach-image">👨‍🏫</div>
+                <div class="coach-name">James Smith</div>
+                <div class="coach-specialty">Football Coach</div>
+                <div class="coach-description">Passionate about developing football skills and team dynamics in young players.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <h2 class="articles-title">Read <span class="highlight">Latest</span> Article on Sports</h2>
+        <div class="articles-grid">
+            <div class="article-card">
+                <div class="article-image">📰</div>
+                <div class="article-content">
+                    <div class="article-author">
+                        <div class="author-avatar">JA</div>
+                        <div class="author-info">
+                            <div class="author-name">John Adler</div>
+                            <div class="author-date">Feb 3, 2026</div>
+                        </div>
+                    </div>
+                    <h3 class="article-title">The Art of Tactical Positioning and Excellence</h3>
+                    <p class="article-description">Discover the secrets of top coaches in positioning athletes for maximum performance.</p>
+                    <div class="article-actions">
+                        <button class="action-btn">👁️</button>
+                        <button class="action-btn primary">❤️</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-image">📰</div>
+                <div class="article-content">
+                    <div class="article-author">
+                        <div class="author-avatar">EM</div>
+                        <div class="author-info">
+                            <div class="author-name">Emily Morgan</div>
+                            <div class="author-date">Feb 2, 2026</div>
+                        </div>
+                    </div>
+                    <h3 class="article-title">How Sports Training Techniques Can Transform Your Game</h3>
+                    <p class="article-description">Learn the latest training methods that professional athletes use to enhance their skills.</p>
+                    <div class="article-actions">
+                        <button class="action-btn">👁️</button>
+                        <button class="action-btn primary">❤️</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-card">
+                <div class="article-image">📰</div>
+                <div class="article-content">
+                    <div class="article-author">
+                        <div class="author-avatar">JC</div>
+                        <div class="author-info">
+                            <div class="author-name">Johnny Cooper</div>
+                            <div class="author-date">Feb 1, 2026</div>
+                        </div>
+                    </div>
+                    <h3 class="article-title">Building Strength and Agility Through Scientific Sightseeing</h3>
+                    <p class="article-description">Explore how modern sports science is revolutionizing athlete development programs.</p>
+                    <div class="article-actions">
+                        <button class="action-btn">👁️</button>
+                        <button class="action-btn primary">❤️</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h3>Newsletter<br><span class="highlight">Subscription</span></h3>
+            <div class="newsletter-input-group">
+                <input type="email" class="newsletter-input" placeholder="Enter your email...">
+                <button class="newsletter-btn">Subscribe</button>
+            </div>
+        </div>
+        <div class="newsletter-image">📧</div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Company</a></li>
+                    <li><a href="#">Team</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Sports Training</a></li>
+                    <li><a href="#">Coaching</a></li>
+                    <li><a href="#">Classes</a></li>
+                    <li><a href="#">Memberships</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">info@dsports.com</a></li>
+                    <li><a href="#">+1 (555) 123-4567</a></li>
+                    <li><a href="#">123 Sports Ave, City</a></li>
+                    <li><a href="#">Support Portal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-logo">Dsports</div>
+            <div class="footer-social">
+                <div class="social-link">f</div>
+                <div class="social-link">𝕏</div>
+                <div class="social-link">📷</div>
+                <div class="social-link">in</div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programa Executivo E20+5 | Enap</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #FFD700;
+        }
+
+        nav {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at center, rgba(20, 20, 30, 0.8) 0%, rgba(0, 0, 0, 0.95) 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            color: #fff;
+            padding: 18px 40px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            transform: translateX(5px);
+        }
+
+        .arrow {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* Geometric Shape */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+        }
+
+        .geometric-shape {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .shape-main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FF1493, #FF0080);
+            clip-path: polygon(
+                0% 20%,
+                40% 20%,
+                40% 0%,
+                100% 50%,
+                40% 100%,
+                40% 80%,
+                0% 80%,
+                30% 50%
+            );
+            box-shadow: 0 30px 80px rgba(255, 20, 147, 0.4);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 30px 80px rgba(255, 20, 147, 0.4);
+            }
+            50% {
+                box-shadow: 0 30px 100px rgba(255, 20, 147, 0.6);
+            }
+        }
+
+        .shape-glow {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.3) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .shape-accent {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            animation: rotate-reverse 20s linear infinite;
+        }
+
+        @keyframes rotate-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .shape-accent-2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), transparent);
+            border-radius: 20px;
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particle-float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 40%; left: 90%; animation-delay: 4s; }
+        .particle:nth-child(4) { top: 80%; left: 20%; animation-delay: 1s; }
+        .particle:nth-child(5) { top: 30%; left: 70%; animation-delay: 3s; }
+
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+
+        /* Missão Section */
+        .missao-section {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+        }
+
+        .missao-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .missao-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .missao-content h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #fff, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .missao-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+        }
+
+        /* Programa Section */
+        .programa-section {
+            padding: 120px 60px;
+            background: #000;
+        }
+
+        .programa-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 80px;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .programa-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .programa-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .programa-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .programa-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        .programa-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333333;
+        }
+
+        .programa-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .programa-card ul li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #444444;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
+        .programa-card ul li:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #666666;
+        }
+
+        .note {
+            font-size: 14px;
+            font-style: italic;
+            color: #666666;
+            margin-top: 10px;
+        }
+
+        /* Perfil Section */
+        .perfil-section {
+            padding: 120px 60px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .perfil-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 64px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 120px 60px;
+            background: #000;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            overflow: hidden;
+            padding: 0 80px;
+            margin: 0 auto;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            gap: 30px;
+        }
+
+        .card {
+            min-width: calc(20% - 24px);
+            background: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            position: relative;
+            height: 500px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #4a4a4a 0%, #2d2d2d 100%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+            z-index: 1;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 2;
+            text-align: left;
+        }
+
+        .card-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-position {
+            font-size: 0.85rem;
+            color: #cccccc;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .card-description {
+            font-size: 0.85rem;
+            color: #e0e0e0;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .card:hover .card-description {
+            opacity: 1;
+            transform: translateY(0);
+            max-height: 200px;
+        }
+
+        .view-cv-btn {
+            display: none;
+            margin-top: 12px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .view-cv-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .nav-button.prev {
+            left: 10px;
+        }
+
+        .nav-button.next {
+            right: 10px;
+        }
+
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-container {
+                gap: 60px;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .geometric-shape {
+                width: 400px;
+                height: 400px;
+            }
+
+            .card {
+                min-width: calc(25% - 22.5px);
+            }
+        }
+
+        @media (max-width: 968px) {
+            header {
+                padding: 20px 30px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 0 30px;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .hero-visual {
+                order: -1;
+                height: 400px;
+            }
+
+            .geometric-shape {
+                width: 300px;
+                height: 300px;
+            }
+
+            .missao-section,
+            .programa-section,
+            .perfil-section,
+            .team-section {
+                padding: 80px 30px;
+            }
+
+            .section-title,
+            .missao-content h2 {
+                font-size: 36px;
+            }
+
+            .card {
+                min-width: calc(33.333% - 20px);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .logo {
+                font-size: 28px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                margin-bottom: 35px;
+            }
+
+            .hero-visual {
+                height: 300px;
+            }
+
+            .geometric-shape {
+                width: 250px;
+                height: 250px;
+            }
+
+            .section-title,
+            .missao-content h2 {
+                font-size: 28px;
+            }
+
+            .carousel-container {
+                padding: 0 60px;
+            }
+            
+            .card {
+                min-width: calc(100% - 0px);
+            }
+
+            .view-cv-btn {
+                display: block;
+            }
+
+            .card:hover .card-description {
+                opacity: 0;
+                max-height: 0;
+            }
+
+            .stat-number {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">E20<span>+5</span></div>
+        <nav>
+            <a href="#programa">Programa</a>
+            <a href="#perfil">Perfil</a>
+            <a href="#equipe">Equipe</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Liderando o Futuro do Estado Brasileiro</h1>
+                <p>Formação de excelência para servidoras e servidores públicos de alto desempenho, com potencial para liderar estrategicamente o Estado brasileiro.</p>
+                <a href="#missao" class="cta-button">
+                    Saiba mais
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="geometric-shape">
+                    <div class="shape-glow"></div>
+                    <div class="shape-main"></div>
+                    <div class="shape-accent"></div>
+                    <div class="shape-accent-2"></div>
+                </div>
+                <div class="particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Missão Section -->
+    <section class="missao-section" id="missao">
+        <div class="missao-container">
+            <div class="missao-content">
+                <h2>Nossa Missão</h2>
+                <p>O Programa Executivo E20+5 tem como missão formar servidoras e servidores públicos de alto desempenho, com potencial para liderar estrategicamente o Estado brasileiro.</p>
+                <p>A iniciativa valoriza talentos internos da Enap e fortalece competências em inovação, gestão e políticas públicas, por meio de uma formação que integra teoria e prática.</p>
+                <p>Ao capacitar profissionais em exercício na Enap para atuarem como lideranças em diferentes contextos, o programa contribui para a construção de um Estado mais eficiente, representativo e orientado à entrega de valor à sociedade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programa Section -->
+    <section class="programa-section" id="programa">
+        <div class="programa-container">
+            <h2 class="section-title">Visão Global do Programa</h2>
+            
+            <div class="programa-grid">
+                <div class="programa-card">
+                    <h3>Curso de Inglês</h3>
+                    <p>Formação linguística intensiva ao longo de 2 anos para aprimoramento profissional e comunicação internacional.</p>
+                </div>
+
+                <div class="programa-card">
+                    <h3>Formação em Liderança Pública</h3>
+                    <p>Desenvolvimento de competências de liderança em três níveis:</p>
+                    <ul>
+                        <li>Liderando a si mesmo</li>
+                        <li>Liderando Equipes</li>
+                        <li>Liderando Organizações</li>
+                    </ul>
+                </div>
+
+                <div class="programa-card">
+                    <h3>Intercâmbio Profissional Internacional</h3>
+                    <p>Promover a atualização e o aperfeiçoamento profissional dos participantes, ampliando conhecimentos técnico-científicos, fomentando a inovação, a troca de experiências e a apropriação de boas práticas internacionais aplicáveis à Administração Pública.</p>
+                </div>
+
+                <div class="programa-card">
+                    <h3>Formação em Governança e Inovação Pública*</h3>
+                    <p>Aprimorar a atuação estratégica dos participantes por meio da reflexão sobre governança, uso de evidências e práticas inovadoras na gestão pública.</p>
+                    <p class="note">* O(A) participante escolherá uma das formações.</p>
+                </div>
+
+                <div class="programa-card">
+                    <h3>Curso Especializado*</h3>
+                    <p>Aprimorar e atualizar os conhecimentos e as habilidades profissionais dos participantes, com foco em sua área de atuação, a fim de fortalecer sua especialização técnica.</p>
+                    <p class="note">* O(A) participante escolherá uma das formações.</p>
+                </div>
+
+                <div class="programa-card">
+                    <h3>Programa de Mentoria</h3>
+                    <p>Aprofundar o PDI, com apoio de mentores, por meio de reflexões estratégicas sobre aspectos como saúde física e emocional, segurança, adaptabilidade e relações interpessoais, fortalecendo a autoconsciência e o protagonismo na carreira.</p>
+                </div>
+
+                <div class="programa-card">
+                    <h3>Estágio Executivo junto às Diretorias</h3>
+                    <p>Carga horária alocada junto a uma das Diretorias da Enap para acompanhamento de rotinas estratégicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfil Section -->
+    <section class="perfil-section" id="perfil">
+        <div class="perfil-container">
+            <h2 class="section-title">Perfil da Turma</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">56%</div>
+                    <div class="stat-label">Mulheres</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">33%</div>
+                    <div class="stat-label">Pessoas Negras</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">64%</div>
+                    <div class="stat-label">Carreiras da Escola</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">4%</div>
+                    <div class="stat-label">Pessoas com Deficiência</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="equipe">
+        <div class="programa-container">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <p style="text-align: center; max-width: 900px; margin: 0 auto 60px; font-size: 18px; color: rgba(255, 255, 255, 0.75);">
+                Profissionais qualificados e dedicados, com formações diversificadas e expertise em gestão pública, educação, tecnologia e desenvolvimento institucional.
+            </p>
+        </div>
+
+        <div class="carousel-container">
+            <button class="nav-button prev" onclick="moveCarousel(-1)">‹</button>
+            
+            <div class="carousel" id="carousel">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Adriana Callaça Gadioli dos Santos</div>
+                        <div class="card-position">Técnico de Nível Superior</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Profissional da área de Gestão Pública, com formação também em Arquitetura e Urbanismo.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Bruna Danielly da Paz Tenório</div>
+                        <div class="card-position">Coordenadora-Geral de Gestão das Diretrizes de Aprend. e Ensino</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Pedagoga com Especialização em Inovação e Tecnologias na Educação.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Caroline Nagel Moura de Souza</div>
+                        <div class="card-position">Gestora de Projetos/Pedagoga</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Pedagoga, com Mestrado Profissional em Gestão do Conhecimento e Tecnologia da Informação.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Danyelle de Siqueira Campos Gil Lemos Barreto</div>
+                        <div class="card-position">Coordenadora-Geral de Desenvol. de Experi. de Aprend. Assíncrona</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Psicóloga com Especialização em Gestão Pública.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Diego Taveira Oliveira</div>
+                        <div class="card-position">Assessor Técnico Especializado</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Profissional com Graduação em Ciências Contábeis e experiência em apresentações técnicas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Fabiany Glaura Alencar e Barbosa</div>
+                        <div class="card-position">Coordenadora de Formação Inicial e Ambientação</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Historiadora, com Mestrado em História e Especialista em Educação Transformadora.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Jader de Sousa Nunes</div>
+                        <div class="card-position">Coordenador-Geral de Desenvolvimento e Execução de Experiências</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Graduado em Português Brasileiro como Segunda Língua e especialista em Inovação e Tecnologias.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Juliana Miranda Leda</div>
+                        <div class="card-position">Coordenadora-Geral de Especialização e MBA</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Enfermeira com Especialização em Unidade de Terapia Intensiva.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Katia Regina Souza Simoes</div>
+                        <div class="card-position">Coordenadora de Gestão Estratégica e Modernização</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Psicóloga Organizacional, com Mestrado em Gestão de Organizações, Liderança e Decisão.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Kauara Rodrigues Dias Ferreira</div>
+                        <div class="card-position">Assessora Técnica/Coordenadora-Geral Substituta</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Graduada em Ciências Políticas e Mestre em Sociologia.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Leonardo Michel Stadter Cunha</div>
+                        <div class="card-position">Coordenador de Orçamento</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Graduado em Educação Física e especialista em Orçamento e Políticas Públicas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Lucas Moura Vieira</div>
+                        <div class="card-position">Assessor Técnico</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Doutor e Mestre em Filosofia, com Graduação em Filosofia e em Pedagogia.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Luciana Günther</div>
+                        <div class="card-position">Técnica em Assuntos Educacionais</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Profissional com formação em Gestão Pública, Psicologia e Administração.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Maria Aparecida Barbosa Martins Vieira</div>
+                        <div class="card-position">Assessor Técnico</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Gestora Pública formada em Administração.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Mariana Haberl de Lima</div>
+                        <div class="card-position">Coordenadora de Acompanhamento do Desenvolvimento de Experiência</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Pedagoga com experiência educacional e atuação em formação e projetos pedagógicos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Natalia Ilka Morais Nascimento</div>
+                        <div class="card-position">Analista em Reforma e Desenvolvimento Agrário</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Licenciada em Ciências Sociais e Mestre em Sociologia.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Pedro Masson Sesconetto Souza</div>
+                        <div class="card-position">Coordenador-Geral de Ciência de Dados</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Graduado e Mestre em Ciência Política.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Pedro Stoeckli Pires</div>
+                        <div class="card-position">Assessor Técnico</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Doutor em Antropologia Social, com Mestrado em Políticas Públicas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Ralph Teixeira de Oliveira Freitas</div>
+                        <div class="card-position">Técnico em Assuntos Educacionais</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Administrador com Mestrado Profissional em Governança e Desenvolvimento.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Raquel Barroso Borges Nunes</div>
+                        <div class="card-position">Chefe de Gabinete</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Letróloga especializada em Saúde Coletiva e Gestão Pública.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Suzana Neiva Santos Ghazale</div>
+                        <div class="card-position">Assessora Técnica</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Bióloga, Bacharel em Ciências Biológicas e Mestre em Ciências Genômicas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Profissional">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-name">Tatiana Cervo de Toloza</div>
+                        <div class="card-position">Assistente Técnico</div>
+                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
+                        <div class="card-description">
+                            Psicóloga com formação em Gestão Pública e especialização em Inovação e Tecnologias.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="nav-button next" onclick="moveCarousel(1)">›</button>
+        </div>
+
+        <div class="dots" id="dots"></div>
+    </section>
+
+    <script>
+        let currentIndex = 0;
+        const carousel = document.getElementById('carousel');
+        const cards = document.querySelectorAll('.card');
+        const dotsContainer = document.getElementById('dots');
+        
+        function toggleCV(button) {
+            const description = button.nextElementSibling;
+            const isVisible = description.classList.contains('visible');
+            
+            if (isVisible) {
+                description.classList.remove('visible');
+                button.textContent = 'Ver Currículo';
+            } else {
+                description.classList.add('visible');
+                button.textContent = 'Ocultar Currículo';
+            }
+        }
+        
+        function getVisibleCards() {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 900) return 3;
+            if (window.innerWidth <= 1200) return 4;
+            return 5;
+        }
+
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const visibleCards = getVisibleCards();
+            const totalDots = Math.ceil(cards.length / visibleCards);
+            
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            }
+            updateDots();
+        }
+
+        function updateDots() {
+            const visibleCards = getVisibleCards();
+            const activeDot = Math.floor(currentIndex / visibleCards);
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === activeDot);
+            });
+        }
+
+        function moveCarousel(direction) {
+            const visibleCards = getVisibleCards();
+            const maxIndex = cards.length - visibleCards;
+            
+            currentIndex += direction * visibleCards;
+            
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            } else if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            const visibleCards = getVisibleCards();
+            currentIndex = slideIndex * visibleCards;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 30;
+            const offset = -(currentIndex * (cardWidth + gap));
+            carousel.style.transform = `translateX(${offset}px)`;
+            updateDots();
+        }
+
+        createDots();
+
+        window.addEventListener('resize', () => {
+            createDots();
+            currentIndex = 0;
+            updateCarousel();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                moveCarousel(1);
+            }
+            if (touchEndX > touchStartX + 50) {
+                moveCarousel(-1);
+            }
+        }
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
