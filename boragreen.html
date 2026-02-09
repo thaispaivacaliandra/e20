@@ -43,10 +43,10 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             color: var(--primary-orange);
-            letter-spacing: -1px;
+            letter-spacing: 3px;
         }
 
         nav {
@@ -1652,10 +1652,6 @@
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        .hero-content{
-            padding-bottom: 0px;
-        }
-
         @media (max-width: 968px) {
             .gov-bar { padding: 8px 20px; gap: 15px; font-size: 11px; }
             header { padding: 14px 20px; }
@@ -1705,6 +1701,8 @@
             .footer-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
         }
+
+        
 
     /* Team Section */
     .team-section {
@@ -1965,7 +1963,8 @@
 
         @media (max-width: 640px) {
             .logo {
-                font-size: 28px;
+                font-size: 12px;
+                text-decoration: none;
             }
 
             .hero h1 {
@@ -1993,6 +1992,10 @@
 
             .carousel-container {
                 padding: 0 15px;
+            }
+
+            .hero-content{
+            padding-bottom: 0px;
             }
 
             .nav-button {
@@ -2323,6 +2326,7 @@
             .image-carousel-container {
                 flex-direction: column;
                 height: 100%;
+                justify-content: end;
             }
 
             .carousel-center {
@@ -2383,11 +2387,10 @@
     <!-- Header -->
     <header>
         <div class="logo"><img class="images_banner" src="banner/Untitled design-9.png" alt=""></div>
-            <a href="#home">Home</a>
-            <a href="#about">Equipe</a>
-            <a href="#news">Noticias</a>
+            <a class="logo" href="#home">Home</a>
+            <a class="logo" href="#about">Equipe</a>
+            <a class="logo" href="#news">Noticias</a>
         </nav>
-        <div class="menu-icon">☰</div>
     </header>
 
     <!-- Hero Section -->
@@ -2404,7 +2407,7 @@
             </p>
         </div>
         <div class="hero-image">
-            <img class="img_hero" src="/fotos/hero.png" alt="">
+            <img class="img_hero" src="fotos/hero.png" alt="">
         </div>
     </section>
 

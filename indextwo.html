@@ -36,6 +36,21 @@
             backdrop-filter: blur(10px);
         }
 
+        .stat-number{
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .stat-number .highlight{
+            color: #FC7D5C;
+            font-size: 42px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
         .logo {
             font-size: 36px;
             font-weight: 800;
@@ -67,7 +82,7 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             display: flex;
             align-items: center;
             padding: 0 60px;
@@ -332,7 +347,7 @@
             font-size: 48px;
             font-weight: 800;
             margin-bottom: 40px;
-            background: linear-gradient(135deg, #fff, #FFD700);
+            background: #FC7D5C;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -361,7 +376,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, #FF1493, #FFD700);
+            background: #FC7D5C;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -534,16 +549,6 @@
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.05);
             border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .stat-number {
-            font-size: 64px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FF1493, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
         }
 
         .stat-label {
@@ -963,7 +968,7 @@
             align-items: center;
             justify-content: space-between;
             gap: 0;
-            min-height: 500px;
+            min-height: 80vh;
         }
 
         .carousel-left {
@@ -1224,6 +1229,11 @@
 
             .carousel-right {
                 text-align: left;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                justify-content: end;
             }
 
             .tags {
@@ -1719,22 +1729,22 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">56%</div>
+                    <div class="stat-number">56<span class="highlight">%</span></div>
                     <div class="stat-label">Mulheres</div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-number">33%</div>
+                    <div class="stat-number">33<span class="highlight">%</span></div>
                     <div class="stat-label">Pessoas Negras</div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-number">64%</div>
+                    <div class="stat-number">64<span class="highlight">%</span></div>
                     <div class="stat-label">Carreiras da Escola</div>
                 </div>
 
                 <div class="stat-card">
-                    <div class="stat-number">4%</div>
+                    <div class="stat-number">4<span class="highlight">%</span></div>
                     <div class="stat-label">Pessoas com Deficiência</div>
                 </div>
             </div>
