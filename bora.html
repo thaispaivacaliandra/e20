@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dsports - Sports is Soul</title>
+    <title>Programa Executivo E20+5 | Enap</title>
     <style>
         * {
             margin: 0;
@@ -43,10 +43,10 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 18px;
             font-weight: bold;
             color: var(--primary-orange);
-            letter-spacing: -1px;
+            letter-spacing: 3px;
         }
 
         nav {
@@ -331,8 +331,7 @@
             padding: 60px 50px;
             background-color: var(--dark-bg);
             color: white;
-            border-radius: 15px;
-            margin: 50px 50px;
+            border-radius: 90px 90px 0 0;
         }
 
         .coaches-title {
@@ -699,8 +698,9 @@
             }
 
             .stats {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 margin: 30px 20px;
+                margin-top: -23px;
             }
 
             .features {
@@ -726,10 +726,15 @@
             .hero,
             .stats,
             .approach-section,
-            .coaches-section,
             .newsletter-section {
                 margin-left: 20px;
                 margin-right: 20px;
+            }
+
+            .coaches-section{
+                margin: 0;
+                border-radius: 60px 60px 0 0;
+                padding: 30px 10px;
             }
 
             .sports-category,
@@ -813,7 +818,7 @@
         }
 
         .carousel-left {
-            flex: 1;
+            flex: 0.2;
             position: relative;
             z-index: 2;
             padding: 40px;
@@ -862,6 +867,12 @@
 
         .avatar:first-child { margin-left: 0; }
 
+        .reviews-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .reviews-text h4 {
             font-size: 14px;
             font-weight: 600;
@@ -872,6 +883,7 @@
             font-size: 12px;
             opacity: 0.6;
             color: #fff;
+            margin: 0;
         }
 
         .carousel-center {
@@ -920,7 +932,7 @@
         }
 
         .carousel-right {
-            flex: 1;
+            flex: 0.3;
             text-align: right;
             position: relative;
             z-index: 2;
@@ -1690,6 +1702,8 @@
             .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
         }
 
+        
+
     /* Team Section */
     .team-section {
             padding: 120px 60px;
@@ -1904,7 +1918,7 @@
             }
 
             .hero {
-                padding: 0 30px;
+                padding: 0px;
             }
 
             .hero-container {
@@ -1949,7 +1963,8 @@
 
         @media (max-width: 640px) {
             .logo {
-                font-size: 28px;
+                font-size: 12px;
+                text-decoration: none;
             }
 
             .hero h1 {
@@ -1977,6 +1992,10 @@
 
             .carousel-container {
                 padding: 0 15px;
+            }
+
+            .hero-content{
+            padding-bottom: 0px;
             }
 
             .nav-button {
@@ -2081,14 +2100,7 @@
             gap: 0;
             min-height: 500px;
         }
-
-        .carousel-left {
-            flex: 1;
-            position: relative;
-            z-index: 2;
-            padding: 40px;
-        }
-
+        
         .carousel-left h3 {
             font-size: 18px;
             font-weight: 600;
@@ -2139,6 +2151,7 @@
         .reviews-text p {
             font-size: 12px;
             opacity: 0.7;
+            margin: 0;
         }
 
         .carousel-center {
@@ -2186,14 +2199,6 @@
             height: 100%; /* Alterado de max-height para height */
             object-fit: cover; /* Alterado de contain para cover - isso faz a imagem preencher todo o espaço */
             object-position: center; /* Centraliza a imagem */
-        }
-
-        .carousel-right {
-            flex: 1;
-            text-align: right;
-            position: relative;
-            z-index: 2;
-            padding: 40px;
         }
 
         .carousel-right h2 {
@@ -2320,6 +2325,8 @@
 
             .image-carousel-container {
                 flex-direction: column;
+                height: 100%;
+                justify-content: end;
             }
 
             .carousel-center {
@@ -2359,6 +2366,10 @@
             .carousel-left {
                 display: none;
             }
+
+            .carousel-section{
+                height: 90vh;
+            }
         }
     .section-title {
         text-align: center;
@@ -2375,14 +2386,11 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="logo"><img class="images_banner" src="../quem é quem/banner/Untitled design-9.png" alt=""></div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#news">News</a>
-            <a href="#sports">Sports</a>
+        <div class="logo"><img class="images_banner" src="banner/Untitled design-9.png" alt=""></div>
+            <a class="logo" href="#home">Home</a>
+            <a class="logo" href="#about">Equipe</a>
+            <a class="logo" href="#news">Noticias</a>
         </nav>
-        <div class="menu-icon">☰</div>
     </header>
 
     <!-- Hero Section -->
@@ -2399,7 +2407,7 @@
             </p>
         </div>
         <div class="hero-image">
-            <img class="img_hero" src="../quem é quem/fotos/hero.png" alt="">
+            <img class="img_hero" src="fotos/hero.png" alt="">
         </div>
     </section>
 
@@ -2456,16 +2464,16 @@
     
                         <div class="carousel-center">
                             <div class="carousel-slide active">
-                                <img src="../quem é quem/banner/54435488752_8ffaaa2d8c_k.jpg" alt="Imagem 1">
+                                <img src="banner/54435488752_8ffaaa2d8c_k.jpg" alt="Imagem 1">
                             </div>
                             <div class="carousel-slide">
-                                <img src="../quem é quem/banner/54436546381_c1a3a26dae_k.jpg" alt="Imagem 2">
+                                <img src="banner/54436546381_c1a3a26dae_k.jpg" alt="Imagem 2">
                             </div>
                             <div class="carousel-slide">
-                                <img src="../quem é quem/banner/54436547954_c26342f0cd_k.jpg" alt="Imagem 3">
+                                <img src="banner/54436547954_c26342f0cd_k.jpg" alt="Imagem 3">
                             </div>
                             <div class="carousel-slide">
-                                <img src="../quem é quem/banner/54436597593_a1f6e9022a_k.jpg" alt="Imagem 4">
+                                <img src="banner/54436597593_a1f6e9022a_k.jpg" alt="Imagem 4">
                             </div>
                         </div>
     
@@ -2478,8 +2486,8 @@
     
                         <div class="carousel-right">
                             <div class="tags">
-                                <span class="tag">Curso de Inglês (2 anos)</span>
                                 <span class="tag">Intercâmbio Profissional</span>
+                                <span class="tag">Curso de Inglês (2 anos)</span>
                                 <span class="tag">Governança e Inovação Pública</span>
                                 <span class="tag">Formação em Liderança Pública</span>
                             </div>
@@ -2492,9 +2500,9 @@
                     <div class="bottom-left">
                         <p>Capacitação que integra experiências práticas, imersões e intercâmbios para desenvolver habilidades de liderança e gestão pública de alto impacto.</p>
                         <div class="features-grid">
-                            <div class="feature-item"><img class="img_ab" src="../quem é quem/banner/54436599028_69f6060c0d_k.jpg" alt="Imagem"></div>
-                            <div class="feature-item"><img class="img_ab" src="../quem é quem/banner/54436601423_23b1d4bbcc_k.jpg" alt="Imagem"></div>
-                            <div class="feature-item"><img class="img_ab" src="../quem é quem/banner/54436755918_a6dec0fb14_k.jpg" alt="Imagem"></div>
+                            <div class="feature-item"><img class="img_ab" src="banner/54436599028_69f6060c0d_k.jpg" alt="Imagem"></div>
+                            <div class="feature-item"><img class="img_ab" src="banner/54436601423_23b1d4bbcc_k.jpg" alt="Imagem"></div>
+                            <div class="feature-item"><img class="img_ab" src="banner/54436755918_a6dec0fb14_k.jpg" alt="Imagem"></div>
                         </div>
                     </div>
                     <div class="bottom-right">
@@ -2834,15 +2842,15 @@
 
     <!-- Articles Section -->
     <section class="articles-section">
-        <h2 class="articles-title">Read <span class="highlight">Latest</span> Article on Sports</h2>
+        <h2 class="articles-title">Leia as noticias do <span class="highlight">E20+</span></h2>
         <div class="articles-grid">
             <div class="article-card">
                 <div class="article-image">📰</div>
                 <div class="article-content">
                     <div class="article-author">
                     </div>
-                    <h3 class="article-title">The Art of Tactical Positioning and Excellence</h3>
-                    <p class="article-description">Discover the secrets of top coaches in positioning athletes for maximum performance.</p>
+                    <h3 class="article-title">What is Lorem Ipsum?</h3>
+                    <p class="article-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                 </div>
             </div>
 
@@ -2851,16 +2859,16 @@
                 <div class="article-content">
                     <div class="article-author">
                     </div>
-                    <h3 class="article-title">How Sports Training Techniques Can Transform Your Game</h3>
-                    <p class="article-description">Learn the latest training methods that professional athletes use to enhance their skills.</p>
+                    <h3 class="article-title">What is Lorem Ipsum?</h3>
+                    <p class="article-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                 </div>
             </div>
 
             <div class="article-card">
                 <div class="article-image">📰</div>
                 <div class="article-content">
-                    <h3 class="article-title">Building Strength and Agility Through Scientific Sightseeing</h3>
-                    <p class="article-description">Explore how modern sports science is revolutionizing athlete development programs.</p>
+                    <h3 class="article-title">What is Lorem Ipsum?</h3>
+                    <p class="article-description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
                 </div>
             </div>
         </div>
