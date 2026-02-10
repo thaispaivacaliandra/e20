@@ -352,7 +352,7 @@
             font-size: 48px;
             font-weight: 800;
             margin-bottom: 40px;
-            background: #FC7D5C;
+            background: linear-gradient(90deg, #FC7D5C 44%, #FDB19D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -374,6 +374,7 @@
         .programa-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .section-title {
@@ -381,7 +382,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
-            background:  #FC7D5C;
+            background:  linear-gradient(90deg, #FC7D5C 44%, #FDB19D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -806,6 +807,14 @@
                 height: 400px;
             }
 
+            .header-content {
+                margin-top: 40px;
+            }
+
+            .header-content h1{
+                margin-top: 0px;
+            }
+
             .geometric-shape {
                 width: 300px;
                 height: 300px;
@@ -817,9 +826,12 @@
 
             .missao-section,
             .programa-section,
-            .perfil-section,
-            .team-section {
+            .perfil-section {
                 padding: 40px 30px;
+            }
+
+            .team-section {
+                padding: 0;
             }
 
             .section-title,
@@ -861,6 +873,20 @@
             }
 
             .carousel-container {
+                padding: 0;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: none;
+                scrollbar-width: none;
+            }
+
+            .carousel-container::-webkit-scrollbar {
+                display: none;
+            }
+
+            .carousel {
+                transition: none !important;
+                transform: none !important;
                 padding: 0 15px;
             }
 
@@ -869,7 +895,11 @@
             }
 
             .card {
-                min-width: 100%;
+                min-width: 75%;
+            }
+
+            .dots {
+                display: none;
             }
 
             .view-cv-btn {
@@ -879,6 +909,13 @@
             .card:hover .card-description {
                 opacity: 0;
                 max-height: 0;
+            }
+
+            .card-description.visible {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                max-height: 200px !important;
+                overflow: visible !important;
             }
 
             .stat-number {
@@ -1257,10 +1294,15 @@
         @media (max-width: 768px) {
             .header-content h1 {
                 font-size: 36px;
+                margin-bottom: 0;
             }
 
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-item:last-child {
+                grid-column: span 2;
             }
 
             .carousel-left {
@@ -1294,7 +1336,7 @@
                     <div class="particle"></div>
                     <div class="particle"></div>
                 </div>
-                <img class="images_banner" src="banner/Untitled design-9.png" alt="">
+                <img class="images_banner" src="banner/branca.svg" alt="">
             </div>
         </div>
     </section>
@@ -1932,12 +1974,18 @@
         let touchStartX = 0;
         let touchEndX = 0;
 
+        function isMobile() {
+            return window.innerWidth <= 640;
+        }
+
         if (carousel) {
             carousel.addEventListener('touchstart', e => {
+                if (isMobile()) return;
                 touchStartX = e.changedTouches[0].screenX;
             });
 
             carousel.addEventListener('touchend', e => {
+                if (isMobile()) return;
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
             });

@@ -15,7 +15,7 @@
             --primary-orange: #FC7D5C;
             --dark-bg: #1a1a1a;
             --light-gray: #f5f5f5;
-            --text-dark: #333;
+            --text-dark: #012124;
             --text-light: #666;
         }
 
@@ -40,6 +40,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             top: 0;
             z-index: 100;
+            display: none;
         }
 
         .logo {
@@ -156,7 +157,7 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             padding: 35px;
-            background-color: var(--dark-bg);
+            background-color: #012124;
             color: white;
             margin: 50px 50px;
             border-radius: 15px;
@@ -332,6 +333,7 @@
             background-color: var(--dark-bg);
             color: white;
             border-radius: 90px 90px 0 0;
+            overflow: hidden;
         }
 
         .coaches-title {
@@ -761,7 +763,7 @@
             font-size: 44px;
             font-weight: 800;
             line-height: 1.2;
-            color: #333;
+            color: #012124;
         }
 
         .content-header-right p {
@@ -1050,7 +1052,7 @@
         .bottom-right h2 {
             font-size: 28px;
             font-weight: 900;
-            color: #333;
+            color: #012124;
             margin: auto;
             line-height: 144%;
         }
@@ -1071,7 +1073,6 @@
             position: relative;
             width: 100%;
             max-width: 1400px;
-            overflow: hidden;
             padding: 0;
             margin: 0 auto;
         }
@@ -1097,7 +1098,8 @@
 
         .card:hover {
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            border-color: rgba(252, 125, 92, 0.2);
+            border-color: 7px rgba(252, 125, 92, 0.2);
+            transform: scale(1.1);
         }
 
         .card-image {
@@ -1126,8 +1128,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-            transition: filter 0.5s ease;
         }
 
         .card:hover .card-image img {
@@ -1345,11 +1345,6 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .card:hover {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            border-color: rgba(252, 125, 92, 0.2);
-        }
-
         .card-image {
             width: 100%;
             height: 100%;
@@ -1372,13 +1367,6 @@
             z-index: 1;
         }
 
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-            transition: filter 0.5s ease;
-        }
 
         .card:hover .card-image img {
             filter: grayscale(0%) contrast(1.1);
@@ -1754,8 +1742,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-            transition: filter 0.5s ease;
         }
 
         .card:hover .card-image img {
@@ -2407,7 +2393,7 @@
             </p>
         </div>
         <div class="hero-image">
-            <img class="img_hero" src="fotos/hero.png" alt="">
+            <img class="img_hero" src="fotos/herotwo.png" alt="">
         </div>
     </section>
 
