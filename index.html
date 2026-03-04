@@ -20,6 +20,11 @@
             color: #fff;
             overflow-x: hidden;
         }
+        
+        main {
+            max-width: 100vw;
+            overflow: hidden;
+        }
 
         /* Header */
         header {
@@ -1382,6 +1387,7 @@
             }
 
             .carousel-right {
+                flex: 1.4;
                 text-align: left;
                 height: 100%;
                 display: flex;
@@ -1746,7 +1752,7 @@
     </style>
 </head>
 <body>
-
+<main>
     <!-- Hero Section -->
     <section class="hero" id="top">
         <div class="hero-container">
@@ -2835,28 +2841,6 @@
             revealObs.observe(el);
         });
 
-        // --- Mobile bottom nav: active state ao rolar ---
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-        if (mobileNavLinks.length) {
-            const navSections = [
-                { id: 'top',    el: document.querySelector('#top') },
-                { id: 'equipe', el: document.querySelector('#equipe') },
-                { id: 'missao', el: document.querySelector('#missao') },
-                { id: 'perfil', el: document.querySelector('#perfil') },
-            ];
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY + window.innerHeight * 0.35;
-                let active = 'top';
-                for (const s of navSections) {
-                    if (s.el && s.el.offsetTop <= scrollY) active = s.id;
-                }
-                mobileNavLinks.forEach(a => {
-                    const href = a.getAttribute('href').replace('#', '');
-                    a.classList.toggle('active', href === active);
-                });
-            }, { passive: true });
-        }
-
     </script>
 
     <!-- Mobile Bottom Nav -->
@@ -2879,5 +2863,31 @@
         </a>
     </nav>
 
+    <script>
+        // --- Mobile bottom nav: active state ao rolar ---
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        if (mobileNavLinks.length) {
+            const navSections = [
+                { id: 'top',    el: document.querySelector('#top') },
+                { id: 'equipe', el: document.querySelector('#equipe') },
+                { id: 'missao', el: document.querySelector('#missao') },
+                { id: 'perfil', el: document.querySelector('#perfil') },
+            ];
+            const updateActiveNav = () => {
+                const scrollY = window.scrollY + window.innerHeight * 0.4;
+                let active = 'top';
+                for (const s of navSections) {
+                    if (s.el && s.el.offsetTop <= scrollY) active = s.id;
+                }
+                mobileNavLinks.forEach(a => {
+                    const href = a.getAttribute('href').replace('#', '');
+                    a.classList.toggle('active', href === active);
+                });
+            };
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            updateActiveNav();
+        }
+    </script>
+</main>
 </body>
 </html>
