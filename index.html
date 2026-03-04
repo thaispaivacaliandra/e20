@@ -943,7 +943,7 @@
             .missao-section,
             .programa-section,
             .perfil-section {
-                padding: 40px 30px;
+                padding: 60px 30px 100px 30px;
             }
 
             .team-section {
@@ -975,7 +975,7 @@
             }
 
             .hero-visual {
-                height: 500px;
+                height: 350px;
             }
 
             .geometric-shape {
@@ -1612,6 +1612,78 @@
             .card.mobile-active .view-cv-btn {
                 display: none !important;
             }
+        }
+
+        /* ─── Hero Mobile: Enhanced Entrance Animations ─── */
+        @media (max-width: 768px) {
+
+            /* Banner: wipe-reveal da esquerda */
+            .images_banner {
+                animation: banner-reveal 0.85s cubic-bezier(0.77, 0, 0.18, 1) 0.05s both;
+            }
+            @keyframes banner-reveal {
+                from { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); opacity: 0.3; }
+                to   { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+            }
+
+            /* Forma geométrica: scale-spin bounce */
+            .geometric-shape {
+                animation: shape-pop 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both,
+                           float 6s ease-in-out 1.5s infinite;
+            }
+            @keyframes shape-pop {
+                0%   { transform: scale(0.35) rotate(-45deg); opacity: 0; filter: blur(14px); }
+                65%  { transform: scale(1.12) rotate(6deg);  opacity: 1; filter: blur(0); }
+                100% { transform: scale(1)    rotate(0deg);  opacity: 1; filter: blur(0); }
+            }
+
+            /* H1: blur slide-up + shimmer laranja contínuo */
+            .hero h1 {
+                background: linear-gradient(110deg, #fff 35%, #FC7D5C 50%, #fff 65%);
+                background-size: 300% auto;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: hero-text-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both,
+                           text-shimmer 5s ease-in-out 2.2s infinite;
+            }
+            @keyframes hero-text-in {
+                from { opacity: 0; transform: translateY(38px); filter: blur(9px); }
+                to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+            }
+            @keyframes text-shimmer {
+                0%, 100% { background-position: 100% center; }
+                50%      { background-position:   0% center; }
+            }
+
+            /* Parágrafo: fade up */
+            .hero-content > p {
+                animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both;
+            }
+            @keyframes hero-fade-up {
+                from { opacity: 0; transform: translateY(28px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+
+            /* CTA: scale pop + pulsação de glow */
+            .hero .cta-button {
+                animation: hero-cta-in 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.92s both,
+                           btn-glow    3.2s ease-in-out 2.8s infinite;
+            }
+            @keyframes hero-cta-in {
+                0%   { opacity: 0; transform: scale(0.76) translateY(24px); }
+                60%  {             transform: scale(1.06) translateY(-3px); }
+                100% { opacity: 1; transform: scale(1)    translateY(0); }
+            }
+            @keyframes btn-glow {
+                0%, 100% { box-shadow: 0 4px 16px rgba(252,125,92,0.18); }
+                50%      { box-shadow: 0 4px 38px rgba(252,125,92,0.60), 0 0 60px rgba(252,125,92,0.14); }
+            }
+
+            /* Partículas: levemente maiores e com cor */
+            .particle { width: 5px !important; height: 5px !important; }
+            .particle:nth-child(odd)  { background: rgba(252,125,92,0.75) !important; }
+            .particle:nth-child(even) { background: rgba(255,215,0,0.60)  !important; }
         }
 
         /* ── Mobile Bottom Nav ── */
@@ -2669,6 +2741,24 @@
                 if (geometricShapeEl) geometricShapeEl.style.transform = `translateY(${p * 55}px) rotate(${p * 20}deg)`;
                 if (particlesEl)      particlesEl.style.transform      = `translateY(${p * -28}px)`;
             }, { passive: true });
+        }
+
+        // ── Mobile: orbs extras coloridos no hero ──
+        if (window.innerWidth <= 768) {
+            const hv = document.querySelector('.hero-visual');
+            if (hv) {
+                [
+                    { c:'rgba(252,125,92,0.70)', s:7, t:'16%', l:'24%', d:7,  dl:0   },
+                    { c:'rgba(255,215,0,0.55)',  s:5, t:'70%', l:'76%', d:9,  dl:1.8 },
+                    { c:'rgba(255,20,147,0.50)', s:6, t:'40%', l:'88%', d:8,  dl:3.2 },
+                    { c:'rgba(252,125,92,0.40)', s:4, t:'82%', l:'10%', d:6,  dl:2.1 },
+                    { c:'rgba(255,215,0,0.45)',  s:5, t:'28%', l:'55%', d:11, dl:4.5 },
+                ].forEach(o => {
+                    const p = document.createElement('div');
+                    p.style.cssText = `position:absolute;width:${o.s}px;height:${o.s}px;background:${o.c};border-radius:50%;top:${o.t};left:${o.l};animation:particle-float ${o.d}s ease-in-out ${o.dl}s infinite;filter:blur(1.5px);pointer-events:none;z-index:3;`;
+                    hv.appendChild(p);
+                });
+            }
         }
 
         // ── Mobile: active card ao rolar horizontalmente ──
