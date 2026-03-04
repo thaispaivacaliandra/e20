@@ -37,7 +37,7 @@
         }
 
         .stat-number{
-            font-size: 56px;
+            font-size: 42px;
             font-weight: 900;
             margin-bottom: 8px;
             letter-spacing: -1px;
@@ -45,7 +45,7 @@
 
         .team-section{
                 overflow: hidden;
-                padding: 120px 0 90px 20px;
+                padding: 90px 20px;
             }
 
         .stat-number .highlight{
@@ -87,11 +87,10 @@
 
         /* Hero Section */
         .hero {
+            min-height: auto;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 60px 50px;
-            background: linear-gradient(135deg, #000000 0%, #0a0a0a 100%);
+            padding: 0 60px;
             position: relative;
             overflow: hidden;
         }
@@ -99,68 +98,97 @@
         .hero::before {
             content: '';
             position: absolute;
-            right: -150px;
-            top: -100px;
-            width: 500px;
-            height: 500px;
-            background-color: rgba(252, 125, 92, 0.08);
-            border-radius: 50%;
+            top: -50%;
+            right: -50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at center, rgba(20, 20, 30, 0.8) 0%, rgba(0, 0, 0, 0.95) 70%);
+            animation: rotate 30s linear infinite;
         }
 
-        .hero-content {
-            flex: 0.3;
-            z-index: 2;
-            max-width: 500px;
-            padding-bottom: 65px;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
-        .hero-title {
-            font-size: 52px;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: #fff;
-            letter-spacing: -2px;
-        }
-
-        .hero-title .highlight {
-            color: #FC7D5C;
-        }
-
-        .hero-arrow {
-            color: #FC7D5C;
-            font-size: 48px;
-            margin: 0 8px;
-            display: inline-block;
-        }
-
-        .hero-divider {
-            width: 50px;
-            height: 3px;
-            background-color: #FC7D5C;
-            margin: 20px 0;
-        }
-
-        .hero-description {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        .hero-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
             align-items: center;
             position: relative;
             z-index: 2;
         }
 
-        .img_hero {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #FC7D5C;
+            color: #fff;
+            padding: 18px 40px;
+            border: 2px solid #FC7D5C;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: #000;
+            border-color: #fff;
+            transform: translateX(5px);
+        }
+
+        .arrow {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        /* Geometric Shape */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px;
+        }
+
+        .geometric-shape {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            animation: float 6s ease-in-out infinite;
         }
 
         .img_ab {
@@ -172,39 +200,134 @@
             object-fit: cover;
         }
 
-        .relative {
-            position: relative;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
         }
 
-        /* Stats Overlay */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 35px;
-            background-color: #1a1a1a;
-            color: white;
-            margin: 0 50px;
-            border-radius: 15px;
-            z-index: 9999;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .shape-main {
             position: absolute;
-            bottom: -40px;
             width: 100%;
-            max-width: 1330px;
-            left: auto;
-            right: auto;
+            height: 100%;
+            background: linear-gradient(135deg, #FF1493, #FF0080);
+            clip-path: polygon(
+                0% 20%,
+                40% 20%,
+                40% 0%,
+                100% 50%,
+                40% 100%,
+                40% 80%,
+                0% 80%,
+                30% 50%
+            );
+            box-shadow: 0 30px 80px rgba(255, 20, 147, 0.4);
+            animation: pulse 3s ease-in-out infinite;
         }
 
-        .stat-item {
-            text-align: left;
-            padding: 10px 0;
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 30px 80px rgba(255, 20, 147, 0.4);
+            }
+            50% {
+                box-shadow: 0 30px 100px rgba(255, 20, 147, 0.6);
+            }
         }
 
-        .stat-text {
-            font-size: 14px;
-            color: #aaa;
-            line-height: 1.5;
+        .shape-glow {
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: -10%;
+            left: -10%;
+            background: radial-gradient(circle, rgba(255, 20, 147, 0.3) 0%, transparent 70%);
+            filter: blur(40px);
+            animation: glow 4s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .shape-accent {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            top: -50px;
+            right: -50px;
+            animation: rotate-reverse 20s linear infinite;
+        }
+
+        @keyframes rotate-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        .shape-accent-2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), transparent);
+            border-radius: 20px;
+            bottom: -30px;
+            left: -30px;
+            transform: rotate(45deg);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: particle-float 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 40%; left: 90%; animation-delay: 4s; }
+        .particle:nth-child(4) { top: 80%; left: 20%; animation-delay: 1s; }
+        .particle:nth-child(5) { top: 30%; left: 70%; animation-delay: 3s; }
+
+        @keyframes particle-float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10%, 90% {
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30px) translateX(20px);
+            }
+        }
+
+        .images_banner {
+            position: relative;
+            width: 600px;
+            height: auto;
+            z-index: 1;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
 
         /* Missão Section */
@@ -251,6 +374,7 @@
         .programa-container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 20px;
         }
 
         .section-title {
@@ -258,7 +382,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
-            background: linear-gradient(90deg, #FC7D5C 44%, #FDB19D 100%);
+            background:  linear-gradient(90deg, #FC7D5C 44%, #FDB19D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -283,14 +407,19 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 20px;
             padding: 40px;
-            transition: all 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             flex-shrink: 0;
+            transform-style: preserve-3d;
+            will-change: transform;
         }
 
         .programa-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(0, 0, 0, 0.2);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: translateY(-14px) perspective(900px) rotateX(3deg);
+            border-color: rgba(0, 0, 0, 0.15);
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.18),
+                0 8px 0 rgba(0, 0, 0, 0.06),
+                0 2px 0 rgba(0, 0, 0, 0.04);
         }
 
         .card-icon {
@@ -424,14 +553,23 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease, border-color 0.3s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
         }
 
-        .stat-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 215, 0, 0.3);
+        /* Top highlight edge for 3D depth feel */
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            pointer-events: none;
         }
+
 
         .stat-label {
             font-size: 18px;
@@ -460,10 +598,12 @@
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             flex-shrink: 0;
             position: relative;
             height: 500px;
+            transform-style: preserve-3d;
+            will-change: transform;
         }
 
         .card-image {
@@ -492,6 +632,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+            transition: filter 0.5s ease;
         }
 
         .card:hover .card-image img {
@@ -536,9 +678,36 @@
         }
 
         .card:hover {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            border-color: 7px rgba(252, 125, 92, 0.2);
-            transform: scale(1.1);
+            box-shadow:
+                0 40px 80px rgba(0, 0, 0, 0.7),
+                0 0 50px rgba(252, 125, 92, 0.15),
+                inset 0 1px 0 rgba(255,255,255,0.08);
+            border: 1px solid rgba(252, 125, 92, 0.3);
+            transform: perspective(1000px) translateZ(20px) scale(1.04);
+        }
+
+        /* Gloss sweep on card hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -130%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.07),
+                transparent
+            );
+            transform: skewX(-20deg);
+            z-index: 5;
+            transition: left 0.6s ease;
+            pointer-events: none;
+        }
+
+        .card:hover::before {
+            left: 160%;
         }
 
         .card:hover .card-description {
@@ -627,9 +796,91 @@
         }
 
         /* Responsive */
+        /* === MELHORIAS 3D GLOBAIS === */
+
+        /* Perspectiva no container do carousel da equipe */
+        .carousel-container {
+            perspective: 2500px;
+        }
+
+        /* Profundidade na seção de stats */
+        .stats-grid {
+            perspective: 1200px;
+        }
+
+        /* Borda superior luminosa nos cards do programa */
+        .programa-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 20, 147, 0.4), rgba(255, 215, 0, 0.4), transparent);
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .programa-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .programa-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Sombra em camadas nos feature items */
+        .feature-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-4px) perspective(400px) rotateX(5deg);
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.5),
+                0 3px 0 rgba(255,255,255,0.04);
+        }
+
+        /* Efeito de profundidade no carousel de imagens */
+        .carousel-section {
+            box-shadow:
+                0 40px 100px rgba(0,0,0,0.5),
+                0 0 0 1px rgba(255,255,255,0.04),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+        }
+
+        /* Shape geométrico com mais brilho */
+        .shape-main {
+            filter: drop-shadow(0 0 40px rgba(255, 20, 147, 0.5));
+        }
+
+        /* Gloss extra no hero visual */
+        .hero-visual::after {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(252, 125, 92, 0.12) 0%, transparent 70%);
+            filter: blur(50px);
+            animation: glow 5s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: 0;
+            border-radius: 50%;
+        }
+
         @media (max-width: 1200px) {
-            .hero-title {
-                font-size: 44px;
+            .hero-container {
+                gap: 0px;
+            }
+
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            .geometric-shape {
+                width: 400px;
+                height: 400px;
             }
 
             .card {
@@ -651,45 +902,38 @@
             }
 
             .hero {
-                flex-direction: column;
-                padding: 40px 30px;
+                padding: 0 30px;
             }
 
-            .stats {
-                grid-template-columns: 1fr 1fr;
-                margin: 0 auto;
-                margin-top: -110px;
-                padding: 25px;
-                max-width: 90vw;
-                position: relative;
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 00px;
             }
 
-            .programa-container {
-                padding: 40px 20px 0px 20px;
+            .hero h1 {
+                font-size: 48px;
             }
 
-            .hero-content {
-                flex: none;
-                max-width: 100%;
-                padding-bottom: 0px;
+            .hero p {
+                font-size: 18px;
             }
 
-            .hero-title {
-                font-size: 38px;
+            .hero-visual {
+                order: -1;
+                height: 400px;
             }
 
-            .card:hover {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-            border-color: 7px rgba(252, 125, 92, 0.2);
-            transform: scale(1);
+            .header-content {
+                margin-top: 40px;
             }
 
-            .hero-image {
-                width: 100%;
+            .header-content h1{
+                margin-top: 0px;
             }
 
-            .programa-container p{
-                line-height: 130%;
+            .geometric-shape {
+                width: 300px;
+                height: 300px;
             }
 
             .team-section{
@@ -703,12 +947,11 @@
             }
 
             .team-section {
-                padding: 0px;
+                padding: 0;
             }
 
             .section-title,
             .missao-content h2 {
-                margin-top: 50px;
                 font-size: 36px;
             }
 
@@ -722,21 +965,22 @@
                 font-size: 28px;
             }
 
-            .hero-title {
-                font-size: 28px;
+            .hero h1 {
+                font-size: 38px;
             }
 
-            .hero-description {
-                font-size: 14px;
+            .hero p {
+                font-size: 16px;
+                margin-bottom: 35px;
             }
 
-            .stats {
-                grid-template-columns: 1fr 1fr;
-                margin: 0 auto;
-                margin-top: -110px;
-                padding: 25px;
-                max-width: 90vw;
-                position: relative;
+            .hero-visual {
+                height: 300px;
+            }
+
+            .geometric-shape {
+                width: 250px;
+                height: 250px;
             }
 
             .section-title,
@@ -783,10 +1027,6 @@
                 max-height: 0;
             }
 
-            .hero-arrow {
-                font-size: 30px;
-            }
-
             .card-description.visible {
                 opacity: 1 !important;
                 transform: translateY(0) !important;
@@ -806,6 +1046,10 @@
                 min-width: calc(100% - 0px);
             }
 
+            .images_banner {
+                width: 300px;
+                height: auto;
+            }
         }
 
         .container {
@@ -1117,9 +1361,8 @@
         @media (max-width: 1024px) {
             .header {
                 grid-template-columns: 1fr;
-                gap: 0px;
+                gap: 20px;
                 padding: 20px;
-                margin-top: 40px;
             }
 
             .header-right {
@@ -1167,6 +1410,7 @@
         @media (max-width: 768px) {
             .header-content h1 {
                 font-size: 36px;
+                margin-bottom: 0;
             }
 
             .features-grid {
@@ -1184,48 +1428,236 @@
                 margin: 20px;
             }
         }
+        /* ============================================
+           INTERACTIVE 3D — ADVANCED EFFECTS
+        ============================================ */
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: #FC7D5C;
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+        }
+
+        .cursor-trail {
+            width: 38px;
+            height: 38px;
+            border: 1.5px solid rgba(252, 125, 92, 0.5);
+            border-radius: 50%;
+            position: fixed;
+            top: 0; left: 0;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease;
+        }
+
+        body.cursor-hover .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(252, 125, 92, 0.6);
+        }
+
+        body.cursor-hover .cursor-trail {
+            width: 58px;
+            height: 58px;
+            border-color: rgba(252, 125, 92, 0.25);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FC7D5C, #FF1493, #FFD700);
+            z-index: 99999;
+            width: 0%;
+            box-shadow: 0 0 14px rgba(252, 125, 92, 0.7);
+            transition: width 0.08s linear;
+        }
+
+        /* Scroll Reveal — 3D Entrance */
+        .scroll-reveal {
+            opacity: 0;
+            transform: perspective(900px) rotateX(18deg) translateY(50px);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: perspective(900px) rotateX(0deg) translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: perspective(900px) rotateY(25deg) translateX(-70px);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: perspective(900px) rotateY(0deg) translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: perspective(900px) rotateY(-25deg) translateX(70px);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: perspective(900px) rotateY(0deg) translateX(0);
+        }
+
+        /* Stagger delays for stat cards */
+        .stats-grid .stat-card:nth-child(1) { transition-delay: 0s; }
+        .stats-grid .stat-card:nth-child(2) { transition-delay: 0.13s; }
+        .stats-grid .stat-card:nth-child(3) { transition-delay: 0.26s; }
+        .stats-grid .stat-card:nth-child(4) { transition-delay: 0.39s; }
+
+        /* 3D Perspective Grid Floor */
+        .perspective-grid {
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            right: -10%;
+            height: 320px;
+            background-image:
+                linear-gradient(rgba(252, 125, 92, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(252, 125, 92, 0.1) 1px, transparent 1px);
+            background-size: 55px 55px;
+            transform: perspective(500px) rotateX(68deg);
+            transform-origin: bottom center;
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 85%);
+            mask-image: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 85%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Floating Glow Orbs */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            pointer-events: none;
+            animation: orb-drift 14s ease-in-out infinite;
+        }
+
+        @keyframes orb-drift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25%  { transform: translate(50px, -35px) scale(1.08); }
+            50%  { transform: translate(-30px, 50px) scale(0.94); }
+            75%  { transform: translate(40px, 28px) scale(1.04); }
+        }
+
+
+        /* Noise grain texture — premium feel */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9997;
+            opacity: 0.3;
+        }
+
+        /* Section hover spotlight glow containers */
+        .team-section,
+        .perfil-section {
+            overflow: hidden;
+        }
+
+        /* ── Mobile Bottom Nav ── */
+        .mobile-nav { display: none; }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                display: flex;
+                position: fixed;
+                bottom: 18px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(8, 8, 8, 0.55);
+                backdrop-filter: blur(24px);
+                -webkit-backdrop-filter: blur(24px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 50px;
+                padding: 8px 12px;
+                gap: 4px;
+                z-index: 9999;
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.07);
+            }
+
+            .mobile-nav a {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 3px;
+                padding: 8px 16px;
+                border-radius: 40px;
+                color: rgba(255, 255, 255, 0.4);
+                text-decoration: none;
+                font-size: 10px;
+                font-weight: 500;
+                letter-spacing: 0.3px;
+                transition: color 0.25s ease, background 0.25s ease;
+            }
+
+            .mobile-nav a svg {
+                width: 20px;
+                height: 20px;
+                stroke: currentColor;
+                fill: none;
+                stroke-width: 1.8;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                transition: stroke 0.25s ease;
+            }
+
+            .mobile-nav a.active {
+                color: #fff;
+                background: rgba(252, 125, 92, 0.18);
+            }
+
+            .mobile-nav a.active svg {
+                stroke: #FC7D5C;
+            }
+        }
+
     </style>
 </head>
 <body>
-<section class="relative">
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                <span class="highlight">Liderando</span> o Futuro do
-                <br>
-                Estado<span class="hero-arrow">→</span><span class="highlight">BRASILEIRO</span>
-            </h1>
-            <div class="hero-divider"></div>
-            <p class="hero-description">
-                Formação de excelência para servidoras e servidores públicos de alto desempenho.
-            </p>
-        </div>
-        <div class="hero-image">
-            <img class="img_hero" src="fotos/herotwo.png" alt="">
-        </div>
-    </section>
 
-    <!-- Stats Overlay -->
-    <section class="stats">
-        <div class="stat-item">
-            <div class="stat-number">56<span class="highlight">%</span></div>
-            <div class="stat-text">Mulheres</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">33<span class="highlight">%</span></div>
-            <div class="stat-text">Pessoas Negras</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">64<span class="highlight">%</span></div>
-            <div class="stat-text">Carreiras da Escola</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-number">4<span class="highlight">%</span></div>
-            <div class="stat-text">Pessoas com Deficiência</div>
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Liderando o Futuro do Estado Brasileiro</h1>
+                <p>Formação de excelência para servidoras e servidores públicos de alto desempenho, com potencial para liderar estrategicamente o Estado brasileiro.</p>
+            </div>
+
+            <div class="hero-visual">
+                <div class="geometric-shape">
+                    <div class="shape-accent"></div>
+                    <div class="shape-accent-2"></div>
+                </div>
+                <div class="particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+                <img class="images_banner" src="banner/branca.svg" alt="">
+            </div>
         </div>
     </section>
-</section>
 
     <!-- Team Section -->
     <section class="team-section" id="equipe">
@@ -1270,7 +1702,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Caroline Nagel Moura de Souza</div>
@@ -1326,7 +1758,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Jader de Sousa Nunes</div>
@@ -1354,7 +1786,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Katia Regina Souza Simoes</div>
@@ -1368,7 +1800,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Kauara Rodrigues Dias Ferreira</div>
@@ -1382,7 +1814,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Leonardo Michel Stadter Cunha</div>
@@ -1396,7 +1828,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Lucas Moura Vieira</div>
@@ -1438,7 +1870,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1598550874175-4d0ef436c909?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Mariana Haberl de Lima</div>
@@ -1452,7 +1884,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Natalia Ilka Morais Nascimento</div>
@@ -1494,7 +1926,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Ralph Teixeira de Oliveira Freitas</div>
@@ -1522,7 +1954,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Suzana Neiva Santos Ghazale</div>
@@ -1536,7 +1968,7 @@
 
                 <div class="card">
                     <div class="card-image">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" alt="Profissional">
+                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
                     </div>
                     <div class="card-content">
                         <div class="card-name">Tatiana Cervo de Toloza</div>
@@ -1906,6 +2338,7 @@
             }
         }
 
+
         // Smooth scroll para links de navegação
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1947,6 +2380,299 @@
                 showSlide(index);
             });
         });
+
+        // ============================================================
+        //  ADVANCED INTERACTIVE 3D — v2
+        // ============================================================
+
+        // --- Scroll Progress Bar ---
+        const scrollProgressBar = document.createElement('div');
+        scrollProgressBar.className = 'scroll-progress';
+        document.body.appendChild(scrollProgressBar);
+
+        window.addEventListener('scroll', () => {
+            const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            scrollProgressBar.style.width = pct + '%';
+        }, { passive: true });
+
+        // --- Custom Cursor (desktop only) ---
+        if (window.innerWidth > 768) {
+            const cursorDot  = document.createElement('div');
+            cursorDot.className = 'custom-cursor';
+            const cursorRing = document.createElement('div');
+            cursorRing.className = 'cursor-trail';
+            document.body.appendChild(cursorDot);
+            document.body.appendChild(cursorRing);
+
+            let cX = 0, cY = 0, rX = 0, rY = 0;
+            document.addEventListener('mousemove', (e) => {
+                cX = e.clientX; cY = e.clientY;
+                cursorDot.style.left = cX + 'px';
+                cursorDot.style.top  = cY + 'px';
+            });
+            (function animateRing() {
+                rX += (cX - rX) * 0.1;
+                rY += (cY - rY) * 0.1;
+                cursorRing.style.left = rX + 'px';
+                cursorRing.style.top  = rY + 'px';
+                requestAnimationFrame(animateRing);
+            })();
+
+            document.querySelectorAll('a, button, .card, .stat-card, .programa-card, .feature-item').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+
+        // --- 3D Perspective Grid Floors ---
+        ['.team-section', '.perfil-section'].forEach(sel => {
+            const sec = document.querySelector(sel);
+            if (!sec) return;
+            sec.style.position = 'relative';
+            const grid = document.createElement('div');
+            grid.className = 'perspective-grid';
+            sec.insertBefore(grid, sec.firstChild);
+        });
+
+        // --- Floating Glow Orbs in Hero ---
+        const heroEl = document.querySelector('.hero');
+        if (heroEl) {
+            [
+                { color: 'rgba(252,125,92,0.13)', size: 320, top: '10%',  left: '3%',  dur: 14, del: 0 },
+                { color: 'rgba(255,20,147,0.09)', size: 260, top: '55%',  left: '62%', dur: 19, del: 3 },
+                { color: 'rgba(255,215,0,0.07)',  size: 200, top: '72%',  left: '28%', dur: 11, del: 6 },
+            ].forEach(o => {
+                const orb = document.createElement('div');
+                orb.className = 'glow-orb';
+                orb.style.cssText = `width:${o.size}px;height:${o.size}px;background:${o.color};top:${o.top};left:${o.left};animation-duration:${o.dur}s;animation-delay:${o.del}s;`;
+                heroEl.appendChild(orb);
+            });
+        }
+
+        // --- Scroll Reveal with IntersectionObserver ---
+        const revealObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('revealed'); });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        // Stat cards — stagger from below
+        document.querySelectorAll('.stat-card').forEach(el => {
+            el.classList.add('scroll-reveal');
+            revealObs.observe(el);
+        });
+
+
+        // Other key elements
+        [
+            '.section-title',
+            '.bottom-right h2',
+            '.bottom-left > p',
+            '.header-content h1',
+            '.header-right p',
+        ].forEach(sel => {
+            document.querySelectorAll(sel).forEach(el => {
+                if (!el.classList.contains('scroll-reveal') &&
+                    !el.classList.contains('scroll-reveal-left') &&
+                    !el.classList.contains('scroll-reveal-right')) {
+                    el.classList.add('scroll-reveal');
+                    revealObs.observe(el);
+                }
+            });
+        });
+
+        // --- Counter Animation for Stats ---
+        let countersStarted = false;
+        const statsSecEl = document.querySelector('.perfil-section');
+        const cntObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersStarted) {
+                    countersStarted = true;
+                    document.querySelectorAll('.stat-number').forEach((el, i) => {
+                        const span     = el.querySelector('.highlight');
+                        const spanHTML = span ? span.outerHTML : '';
+                        const target   = parseInt(el.textContent.replace(/\D/g, '')) || 0;
+                        const delay    = i * 180;
+                        const t0       = performance.now();
+
+                        function count(now) {
+                            const elapsed = now - t0 - delay;
+                            if (elapsed < 0) { requestAnimationFrame(count); return; }
+                            const p     = Math.min(elapsed / 1800, 1);
+                            const eased = 1 - Math.pow(1 - p, 4);
+                            el.innerHTML = Math.round(eased * target) + spanHTML;
+                            if (p < 1) requestAnimationFrame(count);
+                        }
+                        requestAnimationFrame(count);
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+        if (statsSecEl) cntObs.observe(statsSecEl);
+
+        // --- Hero Parallax ---
+        const hVisual  = document.querySelector('.hero-visual');
+        const hContent = document.querySelector('.hero-content');
+        window.addEventListener('scroll', () => {
+            const sy = window.scrollY;
+            if (sy > window.innerHeight * 1.3) return;
+            if (hVisual)  hVisual.style.transform  = `translateY(${sy * 0.22}px)`;
+            if (hContent) hContent.style.transform = `translateY(${sy * 0.09}px)`;
+        }, { passive: true });
+
+        // --- Magnetic Buttons ---
+        document.querySelectorAll('.cta-button, .btn-started').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const r = btn.getBoundingClientRect();
+                const x = (e.clientX - r.left - r.width  / 2) * 0.28;
+                const y = (e.clientY - r.top  - r.height / 2) * 0.28;
+                btn.style.transition = 'transform 0.15s ease';
+                btn.style.transform  = `translate(${x}px, ${y}px) scale(1.06)`;
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transition = 'transform 0.55s cubic-bezier(0.23,1,0.32,1)';
+                btn.style.transform  = '';
+            });
+        });
+
+        // --- Moving Spotlight on dark sections ---
+        ['.team-section'].forEach(sel => {
+            const sec = document.querySelector(sel);
+            if (!sec) return;
+            sec.style.position = 'relative';
+            const glow = document.createElement('div');
+            glow.style.cssText = `
+                position:absolute;width:520px;height:520px;border-radius:50%;
+                background:radial-gradient(circle,rgba(252,125,92,0.07) 0%,transparent 70%);
+                pointer-events:none;z-index:1;transform:translate(-50%,-50%);
+                opacity:0;transition:opacity 0.5s ease;
+            `;
+            sec.appendChild(glow);
+            sec.addEventListener('mousemove', (e) => {
+                const r = sec.getBoundingClientRect();
+                glow.style.left    = (e.clientX - r.left) + 'px';
+                glow.style.top     = (e.clientY - r.top)  + 'px';
+                glow.style.opacity = '1';
+            });
+            sec.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+        });
+
+        // --- Image banner 3D mouse parallax in hero --- ENHANCED
+        const bannerImg       = document.querySelector('.images_banner');
+        const geometricShapeEl = document.querySelector('.geometric-shape');
+        const particlesEl      = document.querySelector('.particles');
+
+        if (bannerImg && window.innerWidth > 768) {
+            const heroEl = document.querySelector('.hero');
+
+            heroEl.addEventListener('mousemove', (e) => {
+                const r = heroEl.getBoundingClientRect();
+                const x = (e.clientX - r.left  - r.width  / 2) / (r.width  / 2);
+                const y = (e.clientY - r.top   - r.height / 2) / (r.height / 2);
+
+                // Imagem principal — rotação forte + translação + scale
+                bannerImg.style.transition = 'transform 0.1s ease';
+                bannerImg.style.transform  = `perspective(900px) rotateY(${x * 20}deg) rotateX(${-y * 15}deg) translateZ(50px) translateX(${x * 22}px) translateY(${y * 16}px) scale(1.05)`;
+
+                // Forma geométrica — vai na direção oposta (efeito de profundidade)
+                if (geometricShapeEl) {
+                    geometricShapeEl.style.transition = 'transform 0.18s ease';
+                    geometricShapeEl.style.transform  = `translateX(${-x * 35}px) translateY(${-y * 25}px) rotate(${x * 6}deg)`;
+                }
+
+                // Partículas — se movem numa terceira direção para criar paralaxe multicamada
+                if (particlesEl) {
+                    particlesEl.style.transition = 'transform 0.25s ease';
+                    particlesEl.style.transform  = `translateX(${x * 50}px) translateY(${y * 38}px)`;
+                }
+            });
+
+            heroEl.addEventListener('mouseleave', () => {
+                const ease = 'transform 0.85s cubic-bezier(0.23,1,0.32,1)';
+                bannerImg.style.transition = ease;
+                bannerImg.style.transform  = '';
+
+                if (geometricShapeEl) {
+                    geometricShapeEl.style.transition = ease;
+                    geometricShapeEl.style.transform  = '';
+                }
+                if (particlesEl) {
+                    particlesEl.style.transition = ease;
+                    particlesEl.style.transform  = '';
+                }
+            });
+        }
+
+        // --- 3D depth on carousel-section with mouse ---
+        const carouselSec = document.querySelector('.carousel-section');
+        if (carouselSec && window.innerWidth > 768) {
+            carouselSec.addEventListener('mousemove', (e) => {
+                const r  = carouselSec.getBoundingClientRect();
+                const x  = (e.clientX - r.left  - r.width  / 2) / (r.width  / 2);
+                const y  = (e.clientY - r.top    - r.height / 2) / (r.height / 2);
+                carouselSec.style.transition = 'transform 0.3s ease';
+                carouselSec.style.transform  = `perspective(2000px) rotateY(${x * 1.5}deg) rotateX(${-y * 1.2}deg)`;
+            });
+            carouselSec.addEventListener('mouseleave', () => {
+                carouselSec.style.transition = 'transform 0.8s ease';
+                carouselSec.style.transform  = '';
+            });
+        }
+
+        // --- Mobile: hero parallax no scroll ---
+        if (window.innerWidth <= 768 && bannerImg) {
+            window.addEventListener('scroll', () => {
+                const sy = window.scrollY;
+                if (sy > window.innerHeight) return;
+                const p = sy / window.innerHeight;
+                bannerImg.style.transform      = `perspective(900px) rotateX(${p * 12}deg) translateY(${p * -40}px) scale(${1 + p * 0.07})`;
+                bannerImg.style.transition     = 'transform 0.05s linear';
+                if (geometricShapeEl) geometricShapeEl.style.transform = `translateY(${p * 55}px) rotate(${p * 20}deg)`;
+                if (particlesEl)      particlesEl.style.transform      = `translateY(${p * -28}px)`;
+            }, { passive: true });
+        }
+
+        // --- Mobile bottom nav: active state ao rolar ---
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        if (mobileNavLinks.length) {
+            const navSections = [
+                { id: 'top',    el: document.querySelector('#top') },
+                { id: 'equipe', el: document.querySelector('#equipe') },
+                { id: 'missao', el: document.querySelector('#missao') },
+                { id: 'perfil', el: document.querySelector('#perfil') },
+            ];
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY + window.innerHeight * 0.35;
+                let active = 'top';
+                for (const s of navSections) {
+                    if (s.el && s.el.offsetTop <= scrollY) active = s.id;
+                }
+                mobileNavLinks.forEach(a => {
+                    const href = a.getAttribute('href').replace('#', '');
+                    a.classList.toggle('active', href === active);
+                });
+            }, { passive: true });
+        }
+
     </script>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="mobile-nav">
+        <a href="#top" class="active">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Início
+        </a>
+        <a href="#equipe">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Equipe
+        </a>
+        <a href="#missao">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Missão
+        </a>
+        <a href="#perfil">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Perfil
+        </a>
+    </nav>
+
 </body>
 </html>
