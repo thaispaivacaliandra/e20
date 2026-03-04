@@ -920,7 +920,7 @@
 
             .hero-visual {
                 order: -1;
-                height: 400px;
+                height: 500px;
             }
 
             .header-content {
@@ -975,7 +975,7 @@
             }
 
             .hero-visual {
-                height: 300px;
+                height: 500px;
             }
 
             .geometric-shape {
@@ -1571,6 +1571,47 @@
         .team-section,
         .perfil-section {
             overflow: hidden;
+        }
+
+        /* ── Mobile: Scroll-driven card animations ── */
+        @media (max-width: 640px) {
+            .carousel-container {
+                scroll-snap-type: x mandatory;
+            }
+
+            .card {
+                scroll-snap-align: center;
+                opacity: 0.48;
+                transform: scale(0.87) !important;
+                transition: transform 0.5s cubic-bezier(0.23,1,0.32,1),
+                            opacity  0.5s ease,
+                            box-shadow 0.5s ease !important;
+            }
+
+            .card.mobile-active {
+                opacity: 1;
+                transform: scale(1) !important;
+                box-shadow:
+                    0 30px 70px rgba(0,0,0,0.65),
+                    0 0 55px rgba(252,125,92,0.22),
+                    inset 0 1px 0 rgba(255,255,255,0.08) !important;
+                border: 1px solid rgba(252,125,92,0.30) !important;
+            }
+
+            .card.mobile-active .card-image img {
+                filter: grayscale(0%) contrast(1.1) !important;
+            }
+
+            .card.mobile-active .card-description {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+                max-height: 150px !important;
+                overflow: hidden !important;
+            }
+
+            .card.mobile-active .view-cv-btn {
+                display: none !important;
+            }
         }
 
         /* ── Mobile Bottom Nav ── */
@@ -2629,6 +2670,80 @@
                 if (particlesEl)      particlesEl.style.transform      = `translateY(${p * -28}px)`;
             }, { passive: true });
         }
+
+        // ── Mobile: active card ao rolar horizontalmente ──
+        (function() {
+            if (window.innerWidth > 640) return;
+            const cont     = document.querySelector('.carousel-container');
+            const allCards = document.querySelectorAll('.card');
+            if (!cont || !allCards.length) return;
+
+            function updateActive() {
+                const cx = cont.scrollLeft + cont.offsetWidth / 2;
+                let best = null, minD = Infinity;
+                allCards.forEach(card => {
+                    const d = Math.abs((card.offsetLeft + card.offsetWidth / 2) - cx);
+                    if (d < minD) { minD = d; best = card; }
+                });
+                allCards.forEach(c => c.classList.remove('mobile-active'));
+                if (best) best.classList.add('mobile-active');
+            }
+
+            cont.addEventListener('scroll', updateActive, { passive: true });
+            window.addEventListener('resize', updateActive);
+            setTimeout(updateActive, 150);
+        })();
+
+        // ── Mobile: giroscópio no hero ──
+        (function() {
+            if (window.innerWidth > 768) return;
+            const bImg   = document.querySelector('.images_banner');
+            const gShape = document.querySelector('.geometric-shape');
+            const parts  = document.querySelector('.particles');
+            if (!bImg) return;
+
+            function onOrient(e) {
+                const x = Math.max(-25, Math.min(25, e.gamma || 0));
+                const y = Math.max(-25, Math.min(25, (e.beta  || 45) - 45));
+                bImg.style.transition  = 'transform 0.25s ease';
+                bImg.style.transform   = `perspective(900px) rotateY(${x * 0.4}deg) rotateX(${-y * 0.3}deg) translateX(${x * 1.8}px) translateY(${y * 1.2}px)`;
+                if (gShape) gShape.style.transform = `translateX(${-x * 3.5}px) translateY(${-y * 2.5}px) rotate(${x * 0.6}deg)`;
+                if (parts)  parts.style.transform  = `translateX(${x * 5}px) translateY(${y * 3.5}px)`;
+            }
+
+            if (typeof DeviceOrientationEvent !== 'undefined') {
+                if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                    // iOS 13+: pede permissão no primeiro toque
+                    window.addEventListener('touchstart', function() {
+                        DeviceOrientationEvent.requestPermission()
+                            .then(r => { if (r === 'granted') window.addEventListener('deviceorientation', onOrient, { passive: true }); })
+                            .catch(() => {});
+                    }, { once: true });
+                } else {
+                    window.addEventListener('deviceorientation', onOrient, { passive: true });
+                }
+            }
+        })();
+
+        // ── Mais scroll-reveal: missão e feature grid ──
+        document.querySelectorAll('.missao-content h2').forEach(el => {
+            if (!el.classList.contains('scroll-reveal') && !el.classList.contains('scroll-reveal-left') && !el.classList.contains('scroll-reveal-right')) {
+                el.classList.add('scroll-reveal');
+                revealObs.observe(el);
+            }
+        });
+
+        document.querySelectorAll('.missao-content p').forEach((el, i) => {
+            el.classList.add(i % 2 === 0 ? 'scroll-reveal-left' : 'scroll-reveal-right');
+            el.style.transitionDelay = (i * 0.15) + 's';
+            revealObs.observe(el);
+        });
+
+        document.querySelectorAll('.feature-item').forEach((el, i) => {
+            el.classList.add('scroll-reveal');
+            el.style.transitionDelay = (i * 0.13) + 's';
+            revealObs.observe(el);
+        });
 
         // --- Mobile bottom nav: active state ao rolar ---
         const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
