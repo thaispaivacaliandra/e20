@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --e20-green: #1E6B6B;
+            --e20-green-light: rgba(30, 107, 107, 0.35);
+            --e20-green-bright: #42c4c4;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -39,6 +45,7 @@
             z-index: 1000;
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--e20-green);
         }
 
         .stat-number{
@@ -46,16 +53,17 @@
             font-weight: 900;
             margin-bottom: 8px;
             letter-spacing: -1px;
+            color: white;
         }
 
         .team-section{
                 overflow: hidden;
-                padding: 90px 20px;
+                padding: 96px 20px;
             }
 
         .stat-number .highlight{
             color: #FC7D5C;
-            font-size: 42px;
+            font-size: 36px;
             font-weight: 900;
             margin-bottom: 8px;
             letter-spacing: -1px;
@@ -95,7 +103,7 @@
             min-height: auto;
             display: flex;
             align-items: center;
-            padding: 0 60px;
+            padding: 120px 60px 80px;
             position: relative;
             overflow: hidden;
         }
@@ -117,7 +125,7 @@
         }
 
         .hero-container {
-            max-width: 1600px;
+            max-width: 1300px;
             margin: 0 auto;
             width: 100%;
             display: grid;
@@ -266,7 +274,7 @@
             position: absolute;
             width: 150px;
             height: 150px;
-            border: 3px solid rgba(255, 215, 0, 0.3);
+            border: 3px solid var(--e20-green-light);
             border-radius: 50%;
             top: -50px;
             right: -50px;
@@ -282,7 +290,7 @@
             position: absolute;
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), transparent);
+            background: linear-gradient(135deg, rgba(30, 107, 107, 0.25), transparent);
             border-radius: 20px;
             bottom: -30px;
             left: -30px;
@@ -335,44 +343,284 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         }
 
+        /* Resultados Section */
+        .resultados-section {
+            padding: 96px 20px;
+            background: linear-gradient(160deg, #050f0f 0%, #0a1a1a 50%, #0a0a0a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resultados-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--e20-green), #FC7D5C);
+        }
+
+        .resultados-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .resultados-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--e20-green-bright);
+            border: 1px solid var(--e20-green-bright);
+            border-radius: 40px;
+            padding: 6px 18px;
+            margin-bottom: 32px;
+        }
+
+        .resultados-container h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 36px;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.15;
+        }
+
+        .resultados-texto {
+            font-size: 18px;
+            line-height: 1.85;
+            color: rgba(255, 255, 255, 0.78);
+            margin-bottom: 70px;
+        }
+
+        .resultados-grafico-placeholder {
+            background: rgba(30, 107, 107, 0.08);
+            border: 1.5px dashed rgba(30, 107, 107, 0.45);
+            border-radius: 20px;
+            padding: 70px 40px;
+            text-align: center;
+        }
+
+        .resultados-grafico-placeholder span {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(30, 107, 107, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .resultados-grafico-placeholder p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Section Divider */
+        .section-divider {
+            position: relative;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--e20-green) 25%, #FC7D5C 50%, var(--e20-green) 75%, transparent 100%);
+            opacity: 0.5;
+            overflow: visible;
+            z-index: 2;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            height: 14px;
+            background: radial-gradient(ellipse, rgba(30, 107, 107, 0.7) 0%, transparent 70%);
+            filter: blur(6px);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
         /* Missão Section */
         .missao-section {
-            padding: 120px 60px;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            padding: 96px 20px;
+            background: linear-gradient(135deg, #020d0e 0%, #041212 55%, #0a0a0a 100%);
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Scan lines — tech feel sutil no fundo escuro */
+        .missao-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 39px,
+                rgba(30, 107, 107, 0.04) 39px,
+                rgba(30, 107, 107, 0.04) 40px
+            );
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .missao-section::after {
+            content: '';
+            position: absolute;
+            top: -200px; right: -200px;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(2, 66, 72, 0.28) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .missao-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 72px;
+            align-items: start;
+            position: relative;
+            z-index: 1;
         }
 
-        .missao-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
+        .missao-left {
+            position: relative;
+            background-color: #f4f9f8;
+            background-image: radial-gradient(circle, rgba(2, 66, 72, 0.11) 1px, transparent 1px);
+            background-size: 24px 24px;
+            border-radius: 24px;
+            padding: 52px 48px;
+            overflow: hidden;
+            box-shadow:
+                0 40px 80px rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(2, 66, 72, 0.2);
+            height: 100%;
         }
 
-        .missao-content h2 {
-            font-size: 48px;
+        /* Canto superior direito com acento de cor */
+        .missao-left::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 160px; height: 160px;
+            background: linear-gradient(225deg, rgba(2, 66, 72, 0.18), transparent 70%);
+            border-radius: 0 24px 0 160px;
+            pointer-events: none;
+        }
+
+        /* Linha decorativa inferior em gradiente */
+        .missao-left::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #024248, #FC7D5C, transparent);
+            border-radius: 0 0 24px 24px;
+        }
+
+        .missao-left h2 {
+            font-size: 64px;
             font-weight: 800;
-            margin-bottom: 40px;
-            background: linear-gradient(90deg, #FC7D5C 44%, #FDB19D 100%);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            color: #061212;
+            margin-bottom: 36px;
+        }
+
+        .missao-left h2 em {
+            font-style: normal;
+            display: block;
+            font-size: 80px;
+            letter-spacing: -4px;
+            background: linear-gradient(90deg, #FC7D5C, #FDB19D);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .missao-content p {
+        .missao-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #024248;
+            margin-bottom: 28px;
+            background: rgba(2, 66, 72, 0.1);
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 1px solid rgba(2, 66, 72, 0.2);
+        }
+
+        .missao-deco-bar {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #024248, #FC7D5C);
+            border-radius: 4px;
+        }
+
+        .missao-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .missao-pilar {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            padding: 32px 36px;
+            background: rgba(30, 107, 107, 0.1);
+            border: 1px solid rgba(30, 107, 107, 0.35);
+            border-left: 4px solid var(--e20-green-bright);
+            border-radius: 16px;
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .missao-pilar:hover {
+            background: rgba(30, 107, 107, 0.18);
+            border-color: rgba(30, 107, 107, 0.6);
+            border-left-color: #FC7D5C;
+            transform: translateX(8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .missao-pilar-num {
+            font-size: 64px;
+            font-weight: 900;
+            color: var(--e20-green-bright);
+            letter-spacing: -3px;
+            flex-shrink: 0;
+            line-height: 1;
+            opacity: 0.85;
+            transition: opacity 0.3s ease, color 0.3s ease;
+            min-width: 68px;
+            text-align: right;
+        }
+
+        .missao-pilar:hover .missao-pilar-num {
+            opacity: 1;
+            color: #FC7D5C;
+        }
+
+        .missao-pilar p {
             font-size: 18px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 25px;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.92);
+            margin: 0;
         }
 
         /* Programa Section */
         .programa-section {
-            padding: 120px 60px;
+            padding: 96px 64px;
             background: #000;
         }
 
@@ -387,7 +635,7 @@
             font-weight: 800;
             text-align: center;
             margin-bottom: 20px;
-            background:  linear-gradient(90deg, #FC7D5C 44%, #FDB19D 100%);
+            background: white;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -536,12 +784,12 @@
 
         /* Perfil Section */
         .perfil-section {
-            padding: 120px 60px;
+            padding: 96px 20px;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
         }
 
         .perfil-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
@@ -555,9 +803,9 @@
         .stat-card {
             text-align: center;
             padding: 40px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(30, 107, 107, 0.06);
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(30, 107, 107, 0.3);
             transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.3s ease, border-color 0.3s ease;
             transform-style: preserve-3d;
             will-change: transform;
@@ -570,9 +818,10 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--e20-green-bright), transparent);
             pointer-events: none;
+            opacity: 0.7;
         }
 
 
@@ -907,12 +1156,16 @@
             }
 
             .hero {
-                padding: 0 30px;
+                padding: 100px 30px 50px;
+            }
+
+            .container {
+                padding: 60px 30px;
             }
 
             .hero-container {
                 grid-template-columns: 1fr;
-                gap: 00px;
+                gap: 0;
             }
 
             .hero h1 {
@@ -951,12 +1204,39 @@
                 padding: 60px 30px 100px 30px;
             }
 
+            .missao-left h2 {
+                font-size: 44px;
+            }
+
+            .missao-left h2 em {
+                font-size: 54px;
+            }
+
+            .missao-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .missao-pilar {
+                padding: 24px 28px;
+                gap: 20px;
+            }
+
+            .missao-pilar-num {
+                font-size: 48px;
+                min-width: 50px;
+            }
+
+            .missao-pilar p {
+                font-size: 16px;
+            }
+
             .team-section {
                 padding: 0;
             }
 
             .section-title,
-            .missao-content h2 {
+            .missao-left h2 {
                 font-size: 36px;
             }
 
@@ -989,7 +1269,7 @@
             }
 
             .section-title,
-            .missao-content h2 {
+            .missao-left h2 {
                 font-size: 28px;
             }
 
@@ -1055,11 +1335,23 @@
                 width: 300px;
                 height: auto;
             }
+
+            .missao-pilar {
+                padding: 24px 24px;
+                gap: 18px;
+                transform: none !important;
+            }
+
+            .missao-pilar-num {
+                font-size: 40px;
+                min-width: 44px;
+            }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
+            padding: 80px 20px;
         }
 
         .header {
@@ -1290,16 +1582,18 @@
 
         .tag {
             padding: 8px 16px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: #024248;
+            border: 1px solid #024248;
             border-radius: 20px;
             font-size: 14px;
+            color: #ffffff;
             cursor: default;
             transition: all 0.3s ease;
         }
 
         .tag:hover {
-            border-color: rgba(255, 255, 255, 0.6);
-            background: rgba(255, 255, 255, 0.05);
+            background: #035a62;
+            border-color: #035a62;
         }
 
         .bottom-section {
@@ -1310,7 +1604,7 @@
         }
 
         .bottom-left {
-            padding: 20px;
+            padding: 0;
         }
 
         .bottom-left p {
@@ -1347,11 +1641,11 @@
         }
 
         .bottom-right {
-            padding: 20px;
+            padding: 0;
         }
 
         .bottom-right h2 {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             line-height: 1.3;
             margin-bottom: 20px;
@@ -1367,7 +1661,7 @@
             .header {
                 grid-template-columns: 1fr;
                 gap: 20px;
-                padding: 20px;
+                padding: 0;
             }
 
             .header-right {
@@ -1431,7 +1725,7 @@
                 display: none;
             }
             .carousel-section{
-                margin: 20px;
+                margin: 0px;
             }
         }
         /* ============================================
@@ -1482,7 +1776,7 @@
             position: fixed;
             top: 0; left: 0;
             height: 3px;
-            background: linear-gradient(90deg, #FC7D5C, #FF1493, #FFD700);
+            background: linear-gradient(90deg, #FC7D5C, #FF1493, #1E6B6B);
             z-index: 99999;
             width: 0%;
             box-shadow: 0 0 14px rgba(252, 125, 92, 0.7);
@@ -1758,7 +2052,7 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>Liderando o Futuro do Estado Brasileiro</h1>
-                <p>Formação de excelência para servidoras e servidores públicos de alto desempenho, com potencial para liderar estrategicamente o Estado brasileiro.</p>
+                <p>Uma jornada formativa que conecta liderança, inovação e prática para gerar impacto no setor público.</p>
             </div>
 
             <div class="hero-visual">
@@ -1778,342 +2072,40 @@
         </div>
     </section>
 
-    <!-- Team Section -->
-    <section class="team-section" id="equipe">
-        <div class="programa-container">
-            <h2 class="section-title">Nossa Equipe</h2>
-            <p style="text-align: center; max-width: 900px; margin: 0 auto 60px; font-size: 18px; color: rgba(255, 255, 255, 0.75);">
-                Profissionais qualificados e dedicados, com formações diversificadas e expertise em gestão pública, educação, tecnologia e desenvolvimento institucional.
-            </p>
-        </div>
-
-        <div class="carousel-container">
-            <button class="nav-button prev hidden" id="prevBtn" onclick="moveCarousel(-1)">‹</button>
-            
-            <div class="carousel" id="carousel">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Adriana.png" alt="Adriana Callaça Gadioli dos Santos">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Adriana Callaça Gadioli dos Santos</div>
-                        <div class="card-position">Técnico de Nível Superior</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Profissional da área de Gestão Pública, com formação também em Arquitetura e Urbanismo.
-                        </div>
-                    </div>
+        <!-- Missão Section -->
+        <section class="missao-section" id="missao">
+            <div class="missao-container">
+                <div class="missao-left">
+                    <div class="missao-eyebrow">Propósito</div>
+                    <h2>Programa<br>Executivo<br><em>E20+5</em></h2>
+                    <div class="missao-deco-bar"></div>
                 </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Bruna Danielly.png" alt="Bruna Danielly da Paz Tenório">
+                <div class="missao-right">
+                    <div class="missao-pilar">
+                        <span class="missao-pilar-num">01</span>
+                        <p>Desenvolver lideranças públicas preparadas para enfrentar desafios complexos e atuar com visão estratégica.</p>
                     </div>
-                    <div class="card-content">
-                        <div class="card-name">Bruna Danielly da Paz Tenório</div>
-                        <div class="card-position">Coordenadora-Geral de Gestão das Diretrizes de Aprend. e Ensino</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Pedagoga com Especialização em Inovação e Tecnologias na Educação.
-                        </div>
+                    <div class="missao-pilar">
+                        <span class="missao-pilar-num">02</span>
+                        <p>A iniciativa valoriza talentos internos da Enap e conecta aprendizado, prática e experiências executivas ao desenvolvimento profissional.</p>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Caroline Nagel Moura de Souza</div>
-                        <div class="card-position">Gestora de Projetos/Pedagoga</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Pedagoga, com Mestrado Profissional em Gestão do Conhecimento e Tecnologia da Informação.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Danyelle de Siqueira.png" alt="Danyelle de Siqueira Campos Gil Lemos Barreto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Danyelle de Siqueira Campos Gil Lemos Barreto</div>
-                        <div class="card-position">Coordenadora-Geral de Desenvol. de Experi. de Aprend. Assíncrona</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Psicóloga com Especialização em Gestão Pública.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Diego Taveira Oliveira.png" alt="Diego Taveira Oliveira">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Diego Taveira Oliveira</div>
-                        <div class="card-position">Assessor Técnico Especializado</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Profissional com Graduação em Ciências Contábeis e experiência em apresentações técnicas.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Fabiany Glaura.png" alt="Fabiany Glaura Alencar e Barbosa">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Fabiany Glaura Alencar e Barbosa</div>
-                        <div class="card-position">Coordenadora de Formação Inicial e Ambientação</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Historiadora, com Mestrado em História e Especialista em Educação Transformadora.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Jader de Sousa Nunes</div>
-                        <div class="card-position">Coordenador-Geral de Desenvolvimento e Execução de Experiências</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Graduado em Português Brasileiro como Segunda Língua e especialista em Inovação e Tecnologias.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Juliana Miranda.png" alt="Juliana Miranda Leda">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Juliana Miranda Leda</div>
-                        <div class="card-position">Coordenadora-Geral de Especialização e MBA</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Enfermeira com Especialização em Unidade de Terapia Intensiva.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Katia Regina Souza Simoes</div>
-                        <div class="card-position">Coordenadora de Gestão Estratégica e Modernização</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Psicóloga Organizacional, com Mestrado em Gestão de Organizações, Liderança e Decisão.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Kauara Rodrigues Dias Ferreira</div>
-                        <div class="card-position">Assessora Técnica/Coordenadora-Geral Substituta</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Graduada em Ciências Políticas e Mestre em Sociologia.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Leonardo Michel Stadter Cunha</div>
-                        <div class="card-position">Coordenador de Orçamento</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Graduado em Educação Física e especialista em Orçamento e Políticas Públicas.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Lucas Moura Vieira</div>
-                        <div class="card-position">Assessor Técnico</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Doutor e Mestre em Filosofia, com Graduação em Filosofia e em Pedagogia.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Luciana Günther.png" alt="Luciana Günther">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Luciana Günther</div>
-                        <div class="card-position">Técnica em Assuntos Educacionais</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Profissional com formação em Gestão Pública, Psicologia e Administração.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Maria Aparecida.png" alt="Maria Aparecida Barbosa Martins Vieira">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Maria Aparecida Barbosa Martins Vieira</div>
-                        <div class="card-position">Assessor Técnico</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Gestora Pública formada em Administração.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Mariana Haberl de Lima</div>
-                        <div class="card-position">Coordenadora de Acompanhamento do Desenvolvimento de Experiência</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Pedagoga com experiência educacional e atuação em formação e projetos pedagógicos.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Natalia Ilka Morais Nascimento</div>
-                        <div class="card-position">Analista em Reforma e Desenvolvimento Agrário</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Licenciada em Ciências Sociais e Mestre em Sociologia.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Pedro Masson .png" alt="Pedro Masson Sesconetto Souza">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Pedro Masson Sesconetto Souza</div>
-                        <div class="card-position">Coordenador-Geral de Ciência de Dados</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Graduado e Mestre em Ciência Política.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Pedro Stoeckli Pires.png" alt="Pedro Stoeckli Pires">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Pedro Stoeckli Pires</div>
-                        <div class="card-position">Assessor Técnico</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Doutor em Antropologia Social, com Mestrado em Políticas Públicas.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Ralph Teixeira de Oliveira Freitas</div>
-                        <div class="card-position">Técnico em Assuntos Educacionais</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Administrador com Mestrado Profissional em Governança e Desenvolvimento.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/Raquel Barroso.png" alt="Raquel Barroso Borges Nunes">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Raquel Barroso Borges Nunes</div>
-                        <div class="card-position">Chefe de Gabinete</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Letróloga especializada em Saúde Coletiva e Gestão Pública.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Suzana Neiva Santos Ghazale</div>
-                        <div class="card-position">Assessora Técnica</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Bióloga, Bacharel em Ciências Biológicas e Mestre em Ciências Genômicas.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-image">
-                        <img src="fotos/sempessoa.jpg" alt="Sem foto">
-                    </div>
-                    <div class="card-content">
-                        <div class="card-name">Tatiana Cervo de Toloza</div>
-                        <div class="card-position">Assistente Técnico</div>
-                        <button class="view-cv-btn" onclick="toggleCV(this)">Ver Currículo</button>
-                        <div class="card-description">
-                            Psicóloga com formação em Gestão Pública e especialização em Inovação e Tecnologias.
-                        </div>
+                    <div class="missao-pilar">
+                        <span class="missao-pilar-num">03</span>
+                        <p>Ao desenvolver lideranças públicas preparadas para enfrentar desafios complexos, o Programa fortalece capacidades institucionais e amplia o impacto da Enap e do Estado na sociedade.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <button class="nav-button next" id="nextBtn" onclick="moveCarousel(1)">›</button>
-        </div>
-
-        <div class="dots" id="dots"></div>
-    </section>
 
     <div class="container">
         <!-- Header -->
         <div class="header">
             <div class="header-content">
-                <h1>O E20+5 forma servidores de alto desempenho</h1>
+                <h1>O E20+5 desenvolve lideranças para transformar o setor público</h1>
             </div>
             <div class="header-right">
-                <p>A iniciativa valoriza talentos internos da Enap e fortalece competências em inovação, gestão e políticas públicas, por meio de uma formação que integra teoria e prática.</p>
+                <p>A iniciativa valoriza talentos internos da Enap e desenvolve competências em liderança, inovação, gestão e políticas públicas, por meio de uma jornada que conecta teoria e prática.</p>
                 <button class="btn-started">Conheça o programa</button>
             </div>
         </div>
@@ -2123,17 +2115,16 @@
             <div class="image-carousel-container">
                 <!-- Left Content -->
                 <div class="carousel-left">
-                    <h3>Formação de Excelência</h3>
-                    <p>Programa que prepara lideranças para os desafios da gestão pública brasileira..</p>
+                    <h3>Formação Estratégica de Lideranças</h3>
+                    <p>Programa que conecta aprendizado, prática e experiências executivas, preparando profissionais para enfrentar desafios complexos do setor público.</p>
                     
                     <div class="reviews">
                         <div class="avatars">
-                            <div class="avatar">E</div>
-                            <div class="avatar">20</div>
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
                         </div>
                         <div class="reviews-text">
                             <h4>25 participantes</h4>
-                            <p>selecionados na turma</p>
                         </div>
                     </div>
                 </div>
@@ -2166,9 +2157,11 @@
                 <div class="carousel-right">
                     <div class="tags">
                         <span class="tag">Curso de Inglês (2 anos)</span>
-                        <span class="tag">Intercâmbio Profissional</span>
-                        <span class="tag">Governança e Inovação Pública</span>
                         <span class="tag">Formação em Liderança Pública</span>
+                        <span class="tag">Estágio Executivo</span>
+                        <span class="tag">Experiência Profissional Internacional</span>
+                        <span class="tag">Mentoria</span>
+                        <span class="tag">Curso Especializado</span>
                     </div>
                 </div>
             </div><!-- end image-carousel-container -->
@@ -2177,30 +2170,22 @@
         <!-- Bottom Section -->
         <div class="bottom-section">
             <div class="bottom-left">
-                <p>Capacitação que integra experiências práticas, imersões e intercâmbios para desenvolver habilidades de liderança e gestão pública de alto impacto. </p>
+                <p>Programa que integra vivências práticas, imersões e experiências estratégicas para desenvolver lideranças preparadas para desafios reais do setor público.</p>
                 <div class="features-grid">
                     <div class="feature-item"><img class="img_ab" src="banner/54436599028_69f6060c0d_k.jpg" alt="Smart Device 2"></div>
-                    <div class="feature-item"><img class="img_ab" src="banner/54436601423_23b1d4bbcc_k.jpg" alt="Smart Device 2"></div>
+                    <div class="feature-item"><img class="img_ab" src="banner/54436547954_c26342f0cd_k.jpg" alt="Smart Device 2"></div>
                     <div class="feature-item"><img class="img_ab" src="banner/54436755918_a6dec0fb14_k.jpg" alt="Smart Device 2"></div>
                 </div>
             </div>
             <div class="bottom-right">
-                <h2>Ao capacitar profissionais em exercício na Enap para atuarem como lideranças em diferentes contextos, o programa contribui para a construção de um Estado mais eficiente, representativo e orientado à entrega de valor à sociedade.</h2>
+                <h2>Ao desenvolver lideranças públicas, o programa contribui para uma administração pública mais eficiente, representativa e orientada a resultados, ampliando a capacidade do Estado de gerar valor para a sociedade.</h2>
             </div>
         </div>
-    </div>
+    </div><!-- end .container -->
 
-    <!-- Missão Section -->
-    <section class="missao-section" id="missao">
-        <div class="missao-container">
-            <div class="missao-content">
-                <h2>Nossa Missão</h2>
-                <p>O Programa Executivo E20+5 tem como missão formar servidoras e servidores públicos de alto desempenho, com potencial para liderar estrategicamente o Estado brasileiro.</p>
-                <p>A iniciativa valoriza talentos internos da Enap e fortalece competências em inovação, gestão e políticas públicas, por meio de uma formação que integra teoria e prática.</p>
-                <p>Ao capacitar profissionais em exercício na Enap para atuarem como lideranças em diferentes contextos, o programa contribui para a construção de um Estado mais eficiente, representativo e orientado à entrega de valor à sociedade.</p>
-            </div>
-        </div>
-    </section>
+    <div class="section-divider"></div>
+
+    <div class="section-divider"></div>
 
     <!-- Perfil Section -->
     <section class="perfil-section" id="perfil">
@@ -2227,6 +2212,22 @@
                     <div class="stat-number">4<span class="highlight">%</span></div>
                     <div class="stat-label">Pessoas com Deficiência</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Resultados Section -->
+    <section class="resultados-section" id="resultados">
+        <div class="resultados-container">
+            <span class="resultados-label">Resultados &amp; Impacto</span>
+            <h2>O E20 como alavanca de desenvolvimento institucional</h2>
+            <p class="resultados-texto">O Programa Executivo E20 tem se consolidado como uma alavanca estratégica de desenvolvimento de lideranças na Enap, com reflexos concretos nos resultados da pesquisa organizacional Fala, Enap! entre 2024 e 2025. Os dados evidenciam avanços na percepção de satisfação, especialmente associados ao aumento das oportunidades de desenvolvimento e reconhecimento, dimensões diretamente influenciadas pelas ações formativas do programa. No campo qualitativo, o E20 aparece de forma recorrente como resposta institucional às demandas por capacitação, fortalecimento de lideranças e valorização da carreira, contribuindo para a construção de um ambiente mais orientado ao aprendizado contínuo e à colaboração entre áreas. Ao conectar desenvolvimento individual com desafios reais da organização e fomentar redes de colaboração internas e externas, o E20 também amplia seu impacto para além da Escola, contribuindo para a formação de lideranças públicas de alto desempenho e para o fortalecimento das capacidades institucionais da Administração Pública Federal.</p>
+
+            <div class="resultados-grafico-placeholder">
+                <span>Em breve</span>
+                <p>Gráfico com indicadores da pesquisa Fala, Enap! 2024–2025</p>
             </div>
         </div>
     </section>
@@ -2822,15 +2823,15 @@
         })();
 
         // ── Mais scroll-reveal: missão e feature grid ──
-        document.querySelectorAll('.missao-content h2').forEach(el => {
+        document.querySelectorAll('.missao-left h2').forEach(el => {
             if (!el.classList.contains('scroll-reveal') && !el.classList.contains('scroll-reveal-left') && !el.classList.contains('scroll-reveal-right')) {
                 el.classList.add('scroll-reveal');
                 revealObs.observe(el);
             }
         });
 
-        document.querySelectorAll('.missao-content p').forEach((el, i) => {
-            el.classList.add(i % 2 === 0 ? 'scroll-reveal-left' : 'scroll-reveal-right');
+        document.querySelectorAll('.missao-pilar').forEach((el, i) => {
+            el.classList.add('scroll-reveal');
             el.style.transitionDelay = (i * 0.15) + 's';
             revealObs.observe(el);
         });
@@ -2849,10 +2850,6 @@
             <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             Início
         </a>
-        <a href="#equipe">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            Equipe
-        </a>
         <a href="#missao">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
             Missão
@@ -2861,6 +2858,10 @@
             <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
             Perfil
         </a>
+        <a href="#resultados">
+            <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 1 18"/><polyline points="16 7 22 7 22 13"/></svg>
+            Resultados
+        </a>
     </nav>
 
     <script>
@@ -2868,10 +2869,10 @@
         const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
         if (mobileNavLinks.length) {
             const navSections = [
-                { id: 'top',    el: document.querySelector('#top') },
-                { id: 'equipe', el: document.querySelector('#equipe') },
-                { id: 'missao', el: document.querySelector('#missao') },
-                { id: 'perfil', el: document.querySelector('#perfil') },
+                { id: 'top',        el: document.querySelector('#top') },
+                { id: 'missao',     el: document.querySelector('#missao') },
+                { id: 'perfil',     el: document.querySelector('#perfil') },
+                { id: 'resultados', el: document.querySelector('#resultados') },
             ];
             const updateActiveNav = () => {
                 const scrollY = window.scrollY + window.innerHeight * 0.4;
